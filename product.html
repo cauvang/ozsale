@@ -1,0 +1,300 @@
+<html>
+
+<head>
+    <title> OZSale</title>
+    <meta name="description" content="oz sale sample" />
+    <link rel="stylesheet" href="./css/site.css" />
+    <link rel="stylesheet" href="./css/item.css" />
+    <link rel="stylesheet" href="./css/product.css" />
+
+    <link rel="stylesheet" href="./css/site.mobile.css" />
+    <link rel="stylesheet" href="./css/item.mobile.css" />
+    <link rel="stylesheet" href="./css/product.mobile.css" />
+
+    <link rel="stylesheet" href="./css/site.tablet.css" />
+    <link rel="stylesheet" href="./css/item.tablet.css" />
+    <link rel="stylesheet" href="./css/product.tablet.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/css-toggle-switch@latest/dist/toggle-switch.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script src="./scripts/app.main-menu.js"></script>
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/jquery.zoom.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <section>
+            <div class="show-xs menu"><a href="#" id="togglemenu"> <i class="fas fa-bars hide-on-menu"></i>
+                    <i class="far fa-window-close color-white show-on-menu"></i></a></div>
+            <img src="./images/logo.PNG" title="Logo" alt="OZSale" class="logo" />
+            <div class="profile">
+                <img src="./images/no-image.png" class="profile-image" />
+                <div class="shopping-cart not-empty" id="shopping-cart-icon">
+                    <i class="fas fa-cart-arrow-down"></i>
+                    <span class="shopping-cart-item-count">1</span>
+                    <div class="cart-empty-text">Delivery xxx </div>
+                    <div class="cart-detail">
+                        <div class="cart-row">
+                            <div class="cart-row-image">
+                                <img src="./images/shoe.JPG">
+                            </div>
+                            <div class="cart-row-detail">
+                                <div class="cart-row-product-name"><a href="cart.html">Adistar Boost Glow Shoes</a></div>
+                                <div class="cart-row-product-size">
+                                    <span>Size</span>
+                                    <span>UK7</span>
+                                </div>
+                                <div class="cart-row-product-count">1 item - $59.00</div>
+                            </div>
+                        </div>
+
+                        <div class="cart-row">
+                            <div class="cart-row-image">
+                                <img src="./images/shoe.JPG">
+                            </div>
+                            <div class="cart-row-detail">
+                                <div class="cart-row-product-name"><a href="#">Adistar Boost Glow Shoes</a></div>
+                                <div class="cart-row-product-size">
+                                    <span>Size</span>
+                                    <span>UK4</span>
+                                </div>
+                                <div class="cart-row-product-count">2 item - $59.00</div>
+                            </div>
+                        </div>
+                        <button class="btn-checkout">Proceed to checkout</button>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <nav>
+            <ul>
+                <li><a href="#">Shop</a></li>
+                <li class="active"> <a href="#">Women</a></li>
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Kid</a></li>
+                <li><a href="#">Footware & Acc</a></li>
+                <li><a href="#">Home & Living</a></li>
+                <li><a href="#">Beauty</a></li>
+                <li><a href="#">Personalise</a></li>
+                <li><a href="#" class="emphasis">Clearance</a></li>
+                <!-- <li class="emphasis"><a href="#" >Clearance</a></li>-->
+
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main">
+        <ul class="page-breakcrum">
+            <li><a href="#" class="link-small-hover">Shop</a></li>
+            <li><a href="#" class="link-small-hover">Adidas Footwear</a></li>
+            <li><a href="#" class="link-small-hover">Womens Shoes</a></li>
+            <li><a href="#" class="link-small-hover">Sneakers</a></li>
+
+        </ul>
+
+        <div style="clear: both">
+            <div class="view-product">
+
+                <div class="big-image"><img class="img-big" src="https://c1.mysalec.com/brands/bd06ad44-8ff6-4d02-9558-bfae65cd312c/f8f33dd4-3286-4138-8b87-76334f4cd598/c7ec5981-42c9-4c6c-ad3b-690e6c1c16f6.JPG"></div>
+                <div class="small-images">
+                    <ul>
+                        <li><a href="#"><img class="img-small" src="./images/Shoe.jpg"></a></li>
+                        <li><a href="#"><img class="img-small" src="./images/Shoe.jpg"></a></li>
+                        <li><a href="#"><img class="img-small" src="./images/Shoe.jpg"></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="view-product-detail">
+                <div>
+                    <div class="brand-name"> Adidas</div>
+                    <div class="product-name"> Adistar Boost Glow Shoes</div>
+                </div>
+
+                <div class="product-price">
+                    <!-- <div class="label-text">Price elsewhere</div> -->
+                    <div class="price-text">$140.00</div>
+                    <div><img class="img-tooltip" src="./images/imgTooltip.png"></div>
+                    <div class="website-label-text">ozsale.com.au:</div>
+                    <div class="website-price-text">$65.00</div>
+                    <div><img class="img-tooltip" src="./images/imgTooltip.png"></div>
+                </div>
+                <div class="pay-now-container">
+                    <span>Pay less today with</span>
+                    <span><img class="img-ourpay" src="./images/imgCapture.PNG"></span>
+                    <img class="img-tooltip" src="./images/imgTooltip.png">
+                    <div class="pay-now">
+                        <span class="pay-now-price">$16.25</span>
+                        <span class="pay-now-count">x4</span>
+                    </div>
+                </div>
+                <div class="controls button-border ">
+                    <div class="size-container">
+                        <div>Select size</div>
+                        <button class="buttons select btn-size">AU8</button>
+                        <button class="buttons btn-size">AU10</button>
+                        <button class="buttons btn-size">AU12</button>
+                        <button class="buttons btn-size">AU14</button>
+                    </div>
+                    <div class="quantity-container">
+                        <div>Select quantity</div>
+                        <Button class="buttons btn-quantity">1</Button>
+                        <Button class="buttons btn-quantity">2</Button>
+                        <Button class="buttons select btn-quantity">3</Button>
+                        <Button class="buttons btn-quantity">4</Button>
+                        <Button class="buttons btn-quantity">5</Button>
+                    </div>
+                    <div>
+                        <button class="add-to-cart-button" data-fancybox data-src="#hidden-content">Add to cart</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="delivery">
+                        <strong>Estimated Delivery</strong><br />
+                        09/10/18 - 14/10/18<br />
+                        Orders are dispatched directly to you from the UK.<br />
+
+                        <br /><strong>Return Policy</strong><br />
+                        Please refer to Return Policy
+                    </div>
+                </div>
+                <button class="button-goup">
+                    <i class="fas fa-angle-up"></i>
+                </button>
+            </div>
+        </div>
+        <div class="product-description">
+            <div class="product-name">Nappa Leather Womens Jacket Cognac</div>
+            <strong>Product Description</strong>
+            <ul>
+                <li>100% Super Soft Nappa Leather</li>
+                <li>Womens Jacket</li>
+                <li>Colour: Cognac </li>
+            </ul>
+            <strong>Measurements</strong><br />
+            <div><a class="link-no-color" href="#">Size Guide</a> </div>
+            <hr>
+            <strong>About Helium</strong> <br />
+            <i>Using only high quality leather, Helium leads rather than follows major fashion trends. With true
+                British style and feel, its traditional qualities offer classic designs in addition to more edgy
+                styles.</i><br />
+
+
+        </div>
+        <span class="arrow-back"><i class="fas fa-angle-left"></i><span class="arrow-back-show-hover-left">Back</span></span>
+
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="paymethod">
+                <ul class="pay-container">
+                    <li class="pay-text">Now Accepting</li>
+                    <li><img src="./images/imgPaypal.PNG"> </li>
+                    <li><img src="./images/imgVisa.PNG"> </li>
+                    <li><img src="./images/imgMasterCard.PNG"></li>
+                    <li><img src="./images/imgVisaCheckout.png"></li>
+                    <li><img src="./images/imgMasterPass.png"></li>
+                    <li><img src="./images/imgAmericanExpress.png"></li>
+                    <li>
+                        <i class="fas fa-lock"></i>
+                        <div class="lock-text">
+                            <div class="emphasis">Shop with confidence</div>
+                            <div>Your order is safe and secure</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <nav>
+                <ul>
+                    <li>About us</li>
+                    <li>Terms and Conditions</li>
+                    <li>Return Policy</li>
+                    <li>Privacy</li>
+                    <li>Help</li>
+                    <li>Blog</li>
+                    <li>Contact</li>
+                    <li>Ourpay</li>
+                    <li>Investors</li>
+                    <li><img src="./images/imgPlaystore.png"></li>
+                    <li><img src="./images/imgApple.png"></li>
+                    <li><img src="./images/imgTwitter.png"></li>
+                    <li><img src="./images/imgFacbook.png"></li>
+                    <li><img src="./images/imgInstagram.png"></li>
+                </ul>
+            </nav>
+
+    </footer>
+
+    <div style="display: none;" id="hidden-content" class="login-form">
+        <img src="./images/logo.PNG" title="Logo" alt="OZSale" class="login-logo" />
+        <div class="sign-up-label">Sign Up</div>
+        <div class="form-row">
+            <label class="lbl"><strong>First Name</strong></label><br />
+            <input>
+        </div>
+        <div class="form-row">
+            <label class="lbl"><strong>Last Name</strong></label><br />
+            <input>
+        </div>
+        <div class="form-row">
+            <label class="lbl"><strong>Email</strong></label><br />
+            <input>
+        </div>
+        <div class="form-row">
+            <label class="lbl"><strong>Password</strong></label><br />
+            <input>
+        </div>
+
+        <div class="conditions">
+            <label class="switch-light switch-candy" onclick="">
+                <input type="checkbox" id="aaa" checked="checked">
+                <span>
+                    <span>Yes</span>
+                    <span>No</span>
+                    <a></a>
+                </span>
+            </label>
+            <span class="agreement">I agree to the <a class="link-no-color" href="#">Terms and Conditions</a></span>
+        </div>
+        <div class="conditions">
+            <label class="switch-light switch-candy" onclick="">
+                <input type="checkbox" id="aaa" checked="checked">
+                <span>
+                    <span>Yes</span>
+                    <span>No</span>
+                    <a></a>
+                </span>
+            </label>
+            <span class="agreement">I agree to receive promotional emails</span>
+        </div>
+        <div class="form-buttons">
+            <button class="btn-join">Join Now</button>
+            <button class="btn-facebook"><i class="fab fa-facebook-f"></i> Sign up with Facebook</button>
+            <button class="btn-visa"> <img class="img-visa" alt="Visa Checkout" <img src="https://assets.secure.checkout.visa.com/wallet-services-web/xo/button.png?width=310&height=47&cobrand=false&svg=false"></button>
+        </div>
+        <div class="form-row">
+            <a class="link-no-color" class="login-link" href="#">Back To Login</a>
+        </div>
+    </div>
+    <script>
+        app.init();
+        app.mainMenu.init();
+    </script>
+</body>
+
+</html>

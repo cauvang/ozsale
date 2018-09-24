@@ -1,0 +1,236 @@
+.side-bar {
+    width: 25%;
+    float: left;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+}
+
+.no-pos {
+    left: 0px;
+    right: initial;
+}
+
+.show-hover-left {
+    left: -125px;
+    position: absolute;
+    width: 130px;
+    transition: all 1.5s ease;
+}
+
+.no-pos:hover {
+    overflow: auto;
+    width: 150px;
+    transition: all 1.5s ease;
+
+}
+
+.no-pos:hover .show-hover-left {
+    left: 20px;
+
+}
+
+
+.detail {
+    width: 75%;
+    float: left;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.page-breakcrum {
+    font-size: 12px;
+    color: gray;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    overflow: auto;
+}
+
+ul {
+    list-style-type: none;
+    /* overflow: auto; */
+    padding: 0;
+}
+
+.page-breakcrum>li {
+    float: left;
+}
+
+.page-breakcrum li:after {
+    content: "/";
+    margin: 0px 3px;
+}
+
+.page-breakcrum li:last-child:after {
+    content: "";
+}
+
+.category-level-1>li {
+    padding-bottom: 25px;
+}
+
+.category-level-2 {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.category-level-2>li {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 0 0 2px;
+    color: gray;
+}
+
+.category-level-3>li {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 0 0 10px;
+    color: gray;
+}
+
+.product-item-wrapper {
+    float: left;
+}
+
+.item-wrapper-inner {
+    padding-right: 5px;
+    position: relative;
+}
+
+.wrapper-image {
+    width: 100%;
+}
+
+.no-bg {
+    background-color: white;
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+    color: black;
+}
+
+
+
+.options {
+    position: absolute;
+    width: 28px;
+    height: 26px;
+    bottom: 0px;
+    right: 0px;
+    background: rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.options .controls {
+    width: 0;
+    transition: all 1.5s ease;
+    left: 38px;
+    position: absolute;
+}
+
+.options:hover {
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+.options:hover .controls {
+    width: 100%;
+    padding: 10px;
+    left: 0px;
+    position: relative;
+}
+
+.btn-quantity {
+    padding: 7px 14px !important;
+}
+
+
+.quantity-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-size {
+    padding: 6px 10px;
+}
+
+.buttons:hover {
+    border-color: black;
+    cursor: pointer;
+
+}
+
+.buttons {
+    background-color: #fff;
+    color: #323232;
+    padding: 5px;
+    border: none;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.buttons-opp {
+    background-color: #323232;
+    color: #fff;
+    padding: 6px 14px;
+    border: none;
+    font-weight: 500;
+    font-size: 12px;
+
+}
+
+.product-detail {
+    float: left;
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+.product-type {
+    font-weight: 700;
+    color: #323232;
+}
+
+.brand-detail {
+    font-weight: 400;
+    color: gray;
+}
+
+
+.real-price {
+    font-size: 11px;
+    color: gray;
+    padding-top: 3px;
+    text-decoration: line-through;
+
+}
+
+.reduced-price {
+    font-size: 18px;
+    color: #323232;
+}
+
+.size-container>div,
+.quantity-container>div {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.products-list {
+    width: 100%;
+    padding-top: 20px;
+    float: left;
+}
+
+.col-4 {
+    width: 25%;
+}
+
+.products {
+    overflow: auto;
+    width: 100%;
+}

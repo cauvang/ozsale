@@ -1,0 +1,66 @@
+@media only screen and (max-width: 767px) {
+
+    .side-bar {
+        display: none;
+    }
+
+    .detail {
+        width: 100%;
+    }
+
+    .page-breakcrum {
+        font-size: 20px;
+    }
+
+
+    .pay-text {
+        display: none;
+    }
+
+    .product-detail {
+        margin-top: 25px;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+
+    .col-3,
+    .col-4 {
+        padding: 10px 0;
+        width: 50%;
+    }
+
+    .products-list {
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+
+    .page-breakcrum .fa-angle-right {
+        color: gray;
+        margin-left: 5px;
+        padding-top: 2px;
+    }
+
+    .page-breakcrum>li>a {
+        float: left;
+    }
+
+    .show-sidebar.side-bar {
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 47px;
+        width: 50%;
+        z-index: 3;
+        background-color: rgba(24, 23, 23, 1) !important;
+        border: 1px solid #323232;
+        padding: 20px;
+        -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    .text-dark {
+        color: white;
+    }
+}

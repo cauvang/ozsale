@@ -1,0 +1,24 @@
+.products{
+    float: left;
+    width: 33.33%;
+    background-color: pink;
+    height: 400px;
+}
+
+.delivery{
+    float: left;
+
+    width: 33.33%;
+    background-color: cyan;
+    height: 400px;
+
+}
+
+.payment{
+    float: left;
+
+    width: 33.33%;
+    background-color: greenyellow;
+    height: 400px;
+
+}

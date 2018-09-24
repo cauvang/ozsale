@@ -1,0 +1,80 @@
+@media only screen and (max-width: 767px) {
+    .cart-detail {
+        display: none;
+    }
+
+    .shopping-cart.not-empty {
+        background-color: transparent !important;
+    }
+
+    .shopping-cart .fa-cart-arrow-down {
+        color: green !important;
+    }
+
+    header .shopping-cart:hover .cart-empty-text {
+        display: none;
+    }
+
+    .shopping-cart.not-empty .cart-empty-text {
+        display: none !important;
+    }
+
+    .view-product {
+        width: 100%;
+    }
+
+    .view-product-detail {
+        width: 100%;
+    }
+
+    .big-image {
+        padding-right: 0px;
+    }
+
+    .view-product {
+        position: relative;
+    }
+
+    .small-images {
+        width: 100%;
+        margin-bottom: 15px;
+        position: relative;
+    }
+
+    .small-images ul li {
+        float: left;
+        width: 60px;
+        margin-right: 15px;
+
+    }
+
+    .product-price {
+        overflow: auto;
+
+    }
+
+    .pay-now-container {
+        margin: auto;
+        display: block;
+    }
+
+    .controls {
+        margin-top: 25px;
+    }
+
+    .add-to-cart-button {
+        width: 100%;
+    }
+
+    .shopping-cart-item-count {
+        top: -3px;
+        left: 21px;
+    }
+
+    header .shopping-cart:hover .cart-detail,
+    header .shopping-cart:focus .cart-detail {
+        right: -15px;
+        left: initial;
+        z-index: 111;
+        top: 40px;
+    }

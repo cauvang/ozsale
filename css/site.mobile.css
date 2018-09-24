@@ -1,0 +1,241 @@
+@media only screen and (max-width: 767px) {
+
+    header {
+        background-color: #323232;
+        padding-bottom: 8px;
+        position: fixed;
+        width: 100%;
+        top: 0px;
+        z-index: 22222;
+        -webkit-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    header>nav,
+    header>section {
+        padding: 0px 15px;
+    }
+
+
+    header section {
+        height: 30px;
+    }
+
+    header .logo {
+        width: 80px;
+        padding-top: 5px;
+    }
+
+    header .profile .profile-image {
+        width: 30px;
+    }
+
+
+    header .shopping-cart {
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        margin-left: 10px;
+        background: transparent
+    }
+
+    header .shopping-cart .fa-cart-arrow-down {
+        font-size: 28px;
+        color: #ccc;
+
+    }
+
+    header .cart-empty-text {
+        font-size: 10px;
+        padding-top: 5px;
+        color: #ccc;
+    }
+
+    header .shopping-cart {
+        padding-top: 0px;
+    }
+
+    .main {
+        padding: 0px 15px;
+        margin-top: 0px;
+        overflow: initial;
+    }
+
+    .hero .hero-inner {
+        margin-right: 0px;
+    }
+
+    .hero .hero-big {
+        width: 100%;
+
+    }
+
+    .hero .hero-small {
+        width: 100%;
+        margin-top: 10px;
+        height: auto;
+    }
+
+    .hero .hero-small .hero-upper {
+        height: 200px;
+        width: 50%;
+        float: left;
+        padding-right: 5px;
+
+    }
+
+    .hero .hero-small .hero-lower {
+        height: 200px;
+        width: 50%;
+        float: left;
+        padding-left: 5px;
+    }
+
+    .shopping .shopping-item:nth-child(even) {
+        width: 50%;
+        margin-bottom: 0px;
+        padding-right: 5px;
+    }
+
+    .shopping .shopping-item:nth-child(odd) {
+        width: 50%;
+        margin-bottom: 0px;
+        padding-left: 5px;
+    }
+
+    .shopping .shopping-item.third .shopping-item-inner {
+        margin-left: 0px;
+    }
+
+    .shopping .shopping-item.first .shopping-item-inner {
+        margin-right: 0px;
+    }
+
+    .shopping .shopping-item.second .shopping-item-inner {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    footer {
+        padding: 0px 15px;
+    }
+
+    footer .about-container>li {
+        width: 50%;
+        margin: 0px;
+    }
+
+    footer .about-container>li:first-child {
+        display: none;
+    }
+
+    footer .about {
+        width: 100%;
+    }
+
+    .hide-xs {
+        display: none;
+    }
+
+    .show-xs {
+        display: block;
+
+    }
+
+    .app-icons img {
+        width: 50px;
+    }
+
+    footer nav {
+        padding-left: 0px;
+        width: 100%;
+    }
+
+    .xs-full-width {
+        width: 100%;
+    }
+
+    .menu {
+        width: 30px;
+        float: left;
+
+    }
+
+    header nav {
+        position: fixed;
+        bottom: 0;
+        top: 0;
+        z-index: 11;
+        opacity: 0.95;
+        display: none;
+        padding-top: 50px;
+
+    }
+
+    header nav ul li {
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-size: 16px;
+
+    }
+
+    .menu-open nav {
+        display: block;
+    }
+
+    .show-on-menu {
+        display: none !important;
+    }
+
+    .menu-open .show-on-menu {
+        display: inline-block !important;
+    }
+
+    .menu-open .hide-on-menu {
+        display: none;
+    }
+
+    .menu-open .menu {
+        z-index: 20;
+        position: fixed;
+        color: white;
+    }
+
+    #togglemenu .fas,
+    #togglemenu .far {
+        font-size: 25px;
+    }
+
+    .color-white {
+        color: white;
+    }
+
+    .button-goup {
+        position: fixed;
+        right: 15px;
+        bottom: 10px;
+        border-radius: 2px;
+        background-color: #DDDF27;
+        cursor: pointer;
+        top: initial;
+        width: 40px;
+        height: 40px;
+        opacity: 0.5 !important;
+        display: none;
+    }
+
+    .button-goup i {
+        font-size: x-large;
+    }
+
+    .scroll-top .button-goup {
+        display: block;
+    }
+
+    header .shopping-cart:hover .cart-empty-text {
+        display: none;
+
+    }
+}

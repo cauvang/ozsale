@@ -1,0 +1,104 @@
+@media only screen and (min-width: 768px) and (max-width:1024px) {
+
+    header>nav,
+    header>section {
+        padding: 0px 15px;
+    }
+
+
+    header section {
+        height: 55px;
+    }
+
+    header .logo {
+        width: 80px;
+        padding-top: 5px;
+    }
+
+    header .profile .profile-image {
+        width: 30px;
+    }
+
+    header .shopping-cart {
+        width: 52px;
+        height: 36px;
+        background: #ddd;
+        padding-top: 6px;
+    }
+
+    header .logo {
+        padding-top: 15px;
+    }
+
+    header .profile .profile-image {
+        width: 40px;
+    }
+
+    header .shopping-cart:hover .cart-empty-text {
+        display: none;
+    }
+
+    .main {
+        padding: 0px 15px;
+    }
+
+    .hero .hero-small {
+        height: 400px;
+    }
+
+    footer {
+        padding: 0px 15px;
+    }
+
+    footer .logo {
+        display: none;
+    }
+
+    footer .about {
+        width: 70%;
+    }
+
+    footer .app {
+        width: 30%;
+    }
+
+    .android {
+        margin-top: 15px;
+    }
+
+    footer .about-container>li {
+        padding: 0px;
+        width: 30%;
+    }
+
+    footer nav {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .button-goup {
+        position: fixed;
+        right: 15px;
+        bottom: 10px;
+        border-radius: 2px;
+        background-color: #DDDF27;
+        cursor: pointer;
+        top: initial;
+        width: 40px;
+        height: 40px;
+        opacity: 0.5 !important;
+        display: none;
+    }
+
+    .button-goup i {
+        font-size: x-large;
+    }
+
+    .scroll-top .button-goup {
+        display: block;
+    }
+
+    .hide-tablet {
+        display: none;
+    }
+}
