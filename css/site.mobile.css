@@ -62,6 +62,10 @@
         overflow: initial;
     }
 
+    .hero {
+        height: auto;
+    }
+
     .hero .hero-inner {
         margin-right: 0px;
     }

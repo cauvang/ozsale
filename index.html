@@ -14,13 +14,16 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
     <script src="./scripts/app.main-menu.js"></script>
     <script src="./scripts/app.js"></script>
+    <script src="./scripts/app.utils.js"></script>
+    <script src="./scripts/app.home.js"></script>
+
 </head>
 
 <body>
     <header>
         <section>
             <div class="show-xs menu"><a href="#" id="togglemenu"> <i class="fas fa-bars hide-on-menu"></i> <i class="far fa-window-close color-white show-on-menu"></i></a></div>
-            <img src="./images/logo.PNG" title="Logo" alt="OZSale" class="logo" />
+            <a href="index.html"><img src="./images/logo.PNG" title="Logo" alt="OZSale" class="logo" /></a>
             <div class="profile">
                 <img src="./images/no-image.png" class="profile-image" />
                 <div class="shopping-cart">
@@ -40,13 +43,13 @@
                 <li><a href="#">Beauty</a></li>
                 <li><a href="#">Personalise</a></li>
                 <li><a href="#" class="emphasis">Clearance</a></li>
-                <!-- <li class="emphasis"><a href="#" >Clearance</a></li> khac j nhau-->
+                <!-- <li class="emphasis"><a href="#" >Clearance</aa></li> khac j nhau-->
 
             </ul>
         </nav>
     </header>
 
-    <section class="main">
+    <section class="main" id="category-list">
         <div class="search">
             <i class="fas fa-search"></i>
             <input type="text" class="search-input" placeholder="Search">
@@ -64,6 +67,7 @@
             <div class="hero-small">
                 <div class="hero-upper">
                     <div class="hero-upper-inner">
+                        <span class="description-top">UP TO 85% OFF</span>
                         <img src="./images/imgSwimwear.JPG" class="img-inner">
                         <span class="description-bottom">Swimwear Clearance</span>
                         <span class="arrow"><a href="#"><span class="show-on-hover">Go to site</span><i class="fas fa-angle-right"></i></a></span>
@@ -71,7 +75,7 @@
                 </div>
                 <div class="hero-lower">
                     <div class="hero-upper-inner">
-
+                        <span class="description-top">UP TO 85% OFF</span>
                         <img src="./images/imgWatch.JPG" class="img-inner">
                         <span class="description-bottom">Black Oak Collection Womens &amp; Mens Watches &amp; Gift Sets</span>
                         <span class="arrow"><a href="#"><span class="show-on-hover">Go to site</span><i class="fas fa-angle-right"></i></a></span>
@@ -289,7 +293,25 @@
 
         <button class="button-goup" id="btn-goup">
             <i class="fas fa-angle-up"></i></button>
+        <div style="display:none">
+            <div id="shopping-item-template">
+                <div class="shopping-item">
+                    <div class="shopping-item-inner">
+                        <h2 class="shopping-title">48 HOUR - Bec & Bridge, Backstage, Finders Keepers & MORE</h2>
+                        <div class="image-box">
+                            <span class="description-top">UP TO 85% OFF</span>
+                            <img src="./images/imgBec.JPG" class="img-inner">
+                            <span class="arrow">
+                                <a href="#">
+                                    <span class="show-on-hover">Go to site</span><i class="fas fa-angle-right"></i>
+                                </a></span>
 
+                        </div>
+                        <span class="date-sale">Ending tomorrow</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 
@@ -382,6 +404,7 @@
     <script>
         app.init();
         app.mainMenu.init();
+        app.home.init();
     </script>
 
 </body>

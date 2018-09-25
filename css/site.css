@@ -141,6 +141,7 @@ header section {
 .hero {
     margin-top: 10px;
     overflow: auto;
+    height: 400px;
 }
 
 .hero .hero-big {
