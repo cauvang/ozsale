@@ -1,11 +1,19 @@
 'strict'
 
-var app = app || {}
-app.home = {}
+var app = app || {};
+app.home = {};
 
-const func2 = function () {
+(function () {
     this.init = function () {
-        this.loadCategory("40f80218-a9e1-43c4-96ff-4c046d192a21");
+        $(window).on('hashchange', this.reloadDataMatchHash.bind(this));
+        this.reloadDataMatchHash();
+    }
+
+    this.reloadDataMatchHash = function () {
+        if (window.location.hash) {
+            var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+            this.loadCategory(hash);
+        }
     }
     this.loadCategory = function (categoryId) {
         const me = this;
@@ -49,13 +57,13 @@ const func2 = function () {
 
     }
     this.updateHeroItem = function (selector, item) {
-        var bigHero = $(selector);
-        bigHero.find(".description-top").text(item.Desc);
-        bigHero.find(".description-bottom").text(item.Name);
-        bigHero.find("a").attr("href", "item.html?id=" + item.ID);
-        bigHero.find(".img-inner").attr("src", app.utils.getImageUrl(item));
+        var hero = $(selector);
+        hero.find(".description-top").text(item.Desc);
+        hero.find(".description-bottom").text(item.Name);
+        hero.find("a").attr("href", "item.html?id=" + item.ID);
+        hero.find(".img-inner").attr("src", app.utils.getImageUrl(item));
         if (!item.Desc) {
-            bigHero.find(".description-top").remove();
+            hero.find(".description-top").remove();
         }
     }
     this.renderHero = function (heroItem) {
@@ -64,5 +72,4 @@ const func2 = function () {
         this.updateHeroItem(".hero-lower .hero-upper-inner", heroItem.Sales[2])
     }
 
-};
-func2.apply(app.home)
+}).apply(app.home)
