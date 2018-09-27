@@ -18,9 +18,10 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-    <script src="./scripts/app.main-menu.js"></script>
     <script src="./scripts/app.js"></script>
+    <script src="./scripts/app.main-menu.js"></script>
     <script src="./scripts/app.item.js"></script>
+    <script src="./scripts/app.utils.js"></script>
 
 </head>
 
@@ -39,7 +40,7 @@
             </div>
         </section>
         <nav>
-            <ul>
+            <ul id="menu-list">
                 <li><a href="#">Shop</a></li>
                 <li class="active"> <a href="#">Women</a></li>
                 <li><a href="#">Men</a></li>
@@ -95,7 +96,7 @@
                                 class="fas fa-angle-right" id="arrow-right"></a></li></i>
 
                 </ul>
-                <div class="products">
+                <div class="products ">
                     <div class="col-3 product-item-wrapper">
                         <div class="item-wrapper-inner">
                             <img class="wrapper-image" src="./images/imgPant.JPG">
@@ -336,6 +337,49 @@
         <button class="button-goup">
             <i class="fas fa-angle-up"></i></button>
 
+        <div style="display:none">
+            <div id="product-item-template">
+                <div class="col-4 product-item-wrapper">
+                    <div class="item-wrapper-inner">
+                        <img class="wrapper-image" src="./images/imgPant.JPG">
+                        <div class="options">
+                            <span class="arrow "> <i class="fas fa-angle-right"></i></span>
+                            <div class="controls">
+                                <div class="size-container">
+                                    <div>Select size</div>
+                                    <button class="buttons btn-size">AU8</button>
+                                    <button class="buttons btn-size">AU10</button>
+                                    <button class="buttons btn-size">AU12</button>
+                                    <button class="buttons btn-size">AU14</button>
+                                </div>
+                                <div class="quantity-container">
+                                    <div>Select quantity</div>
+                                    <Button class="buttons btn-quantity">1</Button>
+                                    <Button class="buttons btn-quantity">2</Button>
+                                    <Button class="buttons btn-quantity">3</Button>
+                                    <Button class="buttons btn-quantity">4</Button>
+                                    <Button class="buttons btn-quantity">5</Button>
+                                </div>
+                                <div>
+                                    <button class="buttons-opp">Add to cart</button>
+                                    <button class="buttons-opp"><a href="product.html">View Product</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-detail">
+                        <div class="product-type">Skechers</div>
+                        <div class="brand-detail">Bora Casual Shoe - Gray/Turquoise</div>
+                        <div class="price">
+                            <span class="real-price">$99.95</span>
+                            <span class="reduced-price">$59.00</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </section>
 
 

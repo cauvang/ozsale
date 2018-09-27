@@ -18,7 +18,7 @@ const func = function () {
 
             if (hash == item.catId) activeClass = "active";
 
-            $("#menu-list").append("<li rel= '" + item.catId + "' class ='" + activeClass + "'><a data-catId= '" + item.catId + "' href='#" + item.catId + "' class='" + className + "'>" + item.name + "</a></li>")
+            $("#menu-list").append("<li rel= '" + item.catId + "' class ='" + activeClass + "'><a data-catId= '" + item.catId + "' href='index.html#" + item.catId + "' class='" + className + "'>" + item.name + "</a></li>")
         }
 
         // set hash for fist item

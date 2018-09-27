@@ -83,6 +83,10 @@ ul {
     color: gray;
 }
 
+.category-level-3 {
+    display: none;
+}
+
 .category-level-3>li {
     font-size: 12px;
     font-weight: 500;

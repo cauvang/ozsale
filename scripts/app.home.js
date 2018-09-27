@@ -11,7 +11,7 @@ app.home = {};
 
     this.reloadDataMatchHash = function () {
         if (window.location.hash) {
-            var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+            var hash = window.location.hash.substring(1);
             this.loadCategory(hash);
         }
     }
