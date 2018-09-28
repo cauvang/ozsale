@@ -33,8 +33,6 @@ const func = function () {
 
         });
 
-        // this.reloadDataMatchHash();
-
     }
     this.loadMenu = function () {
         const url = "https://ozsale.herokuapp.com/api/menu"
@@ -47,8 +45,8 @@ const func = function () {
     }
     this.init = function () {
         this.togglemenu = $("#togglemenu");
-        this.togglemenu.click(this.onMenuClick);
         this.loadMenu();
+        this.togglemenu.click(this.onMenuClick);
     }
 };
 func.apply(app.mainMenu)

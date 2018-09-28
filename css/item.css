@@ -238,3 +238,7 @@ ul {
     overflow: auto;
     width: 100%;
 }
+
+.sold-out {
+    display: none;
+}

@@ -23,16 +23,15 @@ app.home = {};
         }).done(this.renderCategoryList.bind(me));
     }
     this.renderCategoryList = function (items) {
-        var main;
         $(".shopping").remove();
         for (var i = 0; i < items.length; i++) {
             if (items[i].Name == "Main") {
-                main = items[i];
+                this.renderHero(items[i]);
+
             } else {
                 this.renderSection(items[i])
             }
         }
-        this.renderHero(main);
     }
     this.renderSection = function (section) {
         if (!section.Sales || section.Sales.length == 0) return;
@@ -46,7 +45,7 @@ app.home = {};
             el.find(".shopping-title").text(data.Name);
             el.find(".description-top").text(data.Desc);
             el.find(".img-inner").attr("src", app.utils.getImageUrl(data));
-            el.find("a").attr("href", "item.html?id=" + data.ID);
+            el.find("a").attr("href", "item.html?id=" + data.ID + '&name=' + data.Name);
             if (!data.Desc) {
                 el.find(".description-top").remove();
             }
@@ -60,7 +59,7 @@ app.home = {};
         var hero = $(selector);
         hero.find(".description-top").text(item.Desc);
         hero.find(".description-bottom").text(item.Name);
-        hero.find("a").attr("href", "item.html?id=" + item.ID);
+        hero.find("a").attr("href", "item.html?id=" + item.ID + '&name=' + item.Name);
         hero.find(".img-inner").attr("src", app.utils.getImageUrl(item));
         if (!item.Desc) {
             hero.find(".description-top").remove();
