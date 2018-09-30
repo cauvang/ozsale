@@ -26,9 +26,11 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/css-toggle-switch@latest/dist/toggle-switch.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-    <script src="./scripts/app.main-menu.js"></script>
-    <script src="./scripts/app.js"></script>
     <script src="./scripts/jquery.zoom.js"></script>
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/app.main-menu.js"></script>
+    <script src="./scripts/app.product.js"></script>
+    <script src="./scripts/app.utils.js"></script>
 
 </head>
 
@@ -111,7 +113,7 @@
 
                 <div class="big-image"><img class="img-big" src="https://c1.mysalec.com/brands/bd06ad44-8ff6-4d02-9558-bfae65cd312c/f8f33dd4-3286-4138-8b87-76334f4cd598/c7ec5981-42c9-4c6c-ad3b-690e6c1c16f6.JPG"></div>
                 <div class="small-images">
-                    <ul>
+                    <ul id="image-navigator">
                         <li><a href="#"><img class="img-small" src="./images/Shoe.jpg"></a></li>
                         <li><a href="#"><img class="img-small" src="./images/Shoe.jpg"></a></li>
                         <li><a href="#"><img class="img-small" src="./images/Shoe.jpg"></a></li>
@@ -294,6 +296,7 @@
     <script>
         app.init();
         app.mainMenu.init();
+        app.product.init();
     </script>
 </body>
 

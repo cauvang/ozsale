@@ -5,6 +5,8 @@ app.item = {};
 
 (function () {
     this.renderSidebarList = function (items) {
+        $("#current-sale-item").text(items.Name); //render breakcrum
+
         $(".side-bar").html("");
         let categories = [];
         if (items.Categories) {
@@ -31,7 +33,7 @@ app.item = {};
 
                     for (var k = 0; k < item2.Sizes.length; k++) {
                         const item3 = item2.Sizes[k];
-                        const li3 = $('<li><a  data-category="' + item3.ID + '" href="#" class="link-small-hover">' + item3.Name + '</a></li>');
+                        const li3 = $('<li><a  data-category="' + item3.Name + '" href="#" class="link-small-hover">' + item3.Name + '</a></li>');
                         ulLevel3.append(li3);
                     }
                     li2.append(ulLevel3);
@@ -44,7 +46,6 @@ app.item = {};
         }
         const me = this;
         setTimeout(function () {
-            console.log("register events.....", me)
             $(".side-bar a").click(me.onSidebarClick);
 
         }, 100)
@@ -59,14 +60,19 @@ app.item = {};
         const el = $(this);
         var li = el.closest("li");
         var ul = li.parent();
+        var parentId = "";
         if ($(li).parent().hasClass("category-level-3")) {
             var aLevel2 = ul.prev();
+            parentId = aLevel2.data().category;
+
             var aLevel1 = aLevel2.closest("li").parent().prev();
             links.push({
-                text: aLevel1.text() //level1
+                text: aLevel1.text(), //level1,
+                id: aLevel1.data().category,
             });
             links.push({
-                text: aLevel2.text() //level2
+                text: aLevel2.text(), //level2,
+                id: aLevel2.data().category,
             });
             links.push({
                 text: el.text() //level3
@@ -77,11 +83,15 @@ app.item = {};
         if ($(li).parent().hasClass("category-level-2")) {
             var aLevel1 = ul.prev();
             links.push({
-                text: aLevel1.text() //level1
+                text: aLevel1.text(), //level1
+                id: aLevel1.data().category,
+
             });
             links.push({
-                text: el.text() //level2
-            })
+                text: el.text(), //level2
+                id: el.data().category,
+
+            });
             $(".category-level-3").hide();
 
             li.find("ul").show();
@@ -89,41 +99,38 @@ app.item = {};
 
         if ($(li).parent().hasClass("category-level-1")) {
             links.push({
-                text: el.text()
+                text: el.text(),
+                id: el.data().category,
+
             })
         }
         for (const link of links) {
-
-            $(".page-breakcrum").append('<li class="cat-li">' + link.text + "</li>")
+            var liElement = $('<li id="category-li" class="cat-li" data-ref="' + link.id + '">' + link.text + "</li>")
+            liElement.click(function () {
+                console.log($(this).data(), link)
+            })
+            $(".page-breakcrum").append(liElement)
         }
 
         var saleItems = $(".product-item-wrapper");
+        console.log("parentId", parentId)
         saleItems.each(function (index, saleItem) {
-            if ($(saleItem).data()["category"] == el.data()["category"] ||
-                $(saleItem).data()["parentCategory"] == el.data()["category"]
-            ) {
+            const menuCategory = el.data().category;
+
+            const itemData = $(saleItem).data();
+
+            if ($(saleItem).data()["category"] == menuCategory ||
+                $(saleItem).data()["parentCategory"] == menuCategory ||
+                $(saleItem).data()["grandParentCategory"] == menuCategory ||
+                (itemData.sizes && itemData.sizes.indexOf(menuCategory) >= 0 && itemData.parentCategory == parentId))
                 $(saleItem).show();
-            } else
+            else
                 $(saleItem).hide();
 
         })
     }
 
-
-    this.GetParameterValues = function (param) {
-        var rawUrl = window.location.href.slice(0, window.location.href.indexOf('#'))
-        var url = rawUrl.slice(window.location.href.indexOf('?') + 1).split('&');
-        for (var i = 0; i < url.length; i++) {
-            var urlparam = url[i].split('=');
-            if (urlparam[0] == param) {
-                return urlparam[1];
-            }
-        }
-    }
-
     this.renderItems = function (items) {
-        // console.log("renderItems", this);
-
         $(".products").html("");
         $(".products-list").html("");
 
@@ -131,23 +138,27 @@ app.item = {};
         for (var i = 0; i < items.SubCategories.length; i++) {
             const itemList = items.SubCategories[i].Items;
             for (var j = 0; j < itemList.length; j++) {
-                this.renderItem(itemList[j], items.SubCategories[i].ID, items.ID, count++)
+                this.renderItem(itemList[j], itemList[j].ID, items.SubCategories[i].ID, items.ID, count++)
             }
         }
     }
 
-    this.renderItem = function (item, catID, parentCatID, count) {
+    this.renderItem = function (item, catID, parentCatID, grandParentCatID, count) {
         var template = $($("#product-item-template").html());
         template.data("category", catID);
-        template.attr("category", catID);
         template.data("parentCategory", parentCatID);
-
+        template.data("grandParentCategory", grandParentCatID);
+        template.attr("id", "item_" + count)
         template.find(".wrapper-image").attr("src", app.utils.getBrandImageUrl(item));
         if (item.Sizes && item.Sizes.length > 0) {
+            let sizes = "";
             template.find(".btn-size").remove();
             for (var is = 0; is < item.Sizes.length; is++) {
+                sizes += item.Sizes[is].Name + ";"
                 template.find(".size-container").append('<button class = "buttons btn-size" >' + item.Sizes[is].Name + '</button>');
             }
+            template.data("sizes", sizes)
+
         } else
             template.find(".size-container").remove();
 
@@ -160,7 +171,7 @@ app.item = {};
         template.find(".real-price").text('$' + item.RP + '.00');
         template.find(".reduced-price").text('$' + item.Price + '.00');
 
-        template.find(".view-product").attr("href", "product.html?id=" + item.ID);
+        template.find(".view-product").attr("href", "product.html?id=" + item.ID + '&saleID=' + this.saleId);
 
         if (count < 3) {
             template.removeClass("col-4");
@@ -171,8 +182,12 @@ app.item = {};
 
     }
 
-    this.renderBreakcrum = function () {
-        $("#current-sale-item").text(this.saleName);
+    this.onBreakcrumClick = function () {
+        $(".product-item-wrapper").show();
+        console.log(this.data())
+        if ($("#category-li[data-ref]") == $(".side-bar a[data-category]")) {
+            console.log("testt");
+        }
 
     }
 
@@ -191,11 +206,9 @@ app.item = {};
         }).done(this.renderItems.bind(me));
     }
     this.init = function () {
-        this.saleId = this.GetParameterValues("id");
+        this.saleId = app.utils.getParameterValues("id");
         this.loadSidebar();
         this.loadItems();
-
-        this.saleName = decodeURIComponent(this.GetParameterValues("name"));
-        this.renderBreakcrum();
+        $("#current-sale-item").click(this.onBreakcrumClick);
     }
 }).apply(app.item)
