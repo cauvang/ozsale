@@ -2,7 +2,6 @@
     width: 70%;
     float: left;
     position: relative;
-
 }
 
 .view-product-detail {
@@ -29,7 +28,6 @@
 
 .img-big {
     width: 100%;
-
 }
 
 a:hover .img-big {
@@ -48,7 +46,6 @@ a:hover .img-big {
 .product-price {
     font-size: 12px;
     font-weight: 400;
-
     margin-top: 30px;
 }
 
@@ -85,14 +82,12 @@ a:hover .img-big {
 }
 
 .img-ourpay {
-    xfloat: left;
     height: 22px;
     display: inline-block;
 }
 
 .pay-now {
     color: #f37325;
-
 }
 
 .pay-now-price {
@@ -112,7 +107,6 @@ a:hover .img-big {
 
 .buttons:hover {
     border-color: black;
-
 }
 
 .add-to-cart-button {
@@ -133,6 +127,10 @@ a:hover .img-big {
 .delivery {
     font-size: 12px;
     margin-top: 15px;
+}
+
+#product-desc {
+    float: left;
 }
 
 .product-description {
@@ -187,140 +185,7 @@ a:hover .img-big {
     color: white;
 }
 
-.login-form {
-    width: 350px;
-    padding: 25px 20px !important;
-}
 
-.login-logo {
-    display: block;
-    MARgin: 0px auto;
-    width: 50%;
-}
-
-.sign-up-label {
-    font-size: 22px;
-    margin-top: 30px;
-    float: left;
-}
-
-.form-row {
-    float: left;
-    width: 100%;
-    padding: 10px 0;
-}
-
-.form-row .lbl {
-    font-size: 12px;
-    line-height: 18px;
-    color: #323232;
-    cursor: pointer;
-}
-
-.form-row input {
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 100%;
-    padding: 7px 10px;
-    box-sizing: border-box;
-
-}
-
-.conditions {
-    position: relative;
-    font-size: 12px;
-}
-
-.switch-light {
-    float: left;
-    height: 15px;
-    width: 80px;
-    margin-top: 2px;
-    margin-right: 9px;
-}
-
-.agreement {
-    float: left;
-    height: 40px;
-    margin-left: 90px;
-    margin-top: -10px;
-}
-
-.switch-light.switch-candy input:checked~span span:nth-child(2) {
-    background: #323232 !important;
-    color: #fff !important;
-}
-
-.switch-light.switch-candy input:not(:checked)~span span:nth-child(2) {
-    background: red !important;
-    color: #fff !important;
-}
-
-.switch-light.switch-candy input:not(:checked)~span span:nth-child(1),
-.switch-light.switch-candy input:not(:checked)~span span:first-child,
-    {
-    background: #323232 !important;
-    color: #fff !important;
-}
-
-.switch-light.switch-candy input:checked~span span:nth-child(1) {
-    background: #65d87f;
-    color: #fff !important;
-}
-
-.form-buttons>button {
-    color: #fff;
-    border-radius: 6px;
-    padding: 10px;
-    text-align: center;
-    float: left;
-    width: 100%;
-    font-weight: 700;
-    font-size: 14px;
-    margin: 5px;
-}
-
-.btn-join {
-    background-color: #323232;
-}
-
-.btn-join:hover {
-    background-color: black;
-}
-
-.fa-facebook-f {
-    margin-right: 10px;
-}
-
-.btn-facebook {
-    background-color: #4F6AA3;
-
-}
-
-.btn-visa {
-    padding: 0px !important;
-}
-
-.img-visa {
-    width: 100%;
-    height: 36px;
-}
-
-.login-link {
-    float: left;
-}
-
-.btn-facebook:hover {
-    background-color: #4f74b2;
-}
-
-.fancybox-close-small {
-    color: #323232 !important;
-}
-
-.fancybox-content {
-    border-radius: 5px;
-}
 
 .cart-detail {
     display: none;
@@ -420,4 +285,8 @@ header .shopping-cart.not-empty .cart-empty-text {
     left: 60px;
     font-size: 10px;
     position: absolute;
+}
+
+.img-select {
+    border: 1px solid red;
 }

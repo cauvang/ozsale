@@ -33,7 +33,7 @@ const func1 = function () {
         $(".button-goup").click(this.onGotopButtonClick)
         $(document).scroll(this.onScrollChange)
         $("#arrow-right").click(this.onArrowRightClick)
-        $(".img-small").click(this.onZoom)
+        //$(".img-big").click(this.onZoom)
     };
 }
 func1.apply(app)

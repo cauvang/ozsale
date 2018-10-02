@@ -11,13 +11,15 @@ app.utils = {};
 
     this.getProductImageList = function (item) {
         var images = [];
-        for (var i = 0; i < item.Images.length; i++) {
-            var img = item.Images[i];
-            var url = "https://c1.mysalec.com/brands/" + item.BrandID + "/" + img.ID + "/";
-            images[i] = {
-                smallThumbnail: url + img.SmallThumbnail,
-                thumbnail: url + img.Thumbnail,
-                preview: url + img.Preview
+        if (item.Images && item.Images.length > 0) {
+            for (var i = 0; i < item.Images.length; i++) {
+                var img = item.Images[i];
+                var url = "https://c1.mysalec.com/brands/" + item.BrandID + "/" + img.ID + "/";
+                images[i] = {
+                    smallThumbnail: url + img.SmallThumbnail,
+                    thumbnail: url + img.Thumbnail,
+                    preview: url + img.Preview
+                }
             }
         }
         return images;

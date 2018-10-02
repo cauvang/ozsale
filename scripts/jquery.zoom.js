@@ -17,7 +17,7 @@
 	};
 
 	// Core Zoom Logic, independent of event listeners.
-	$.zoom = function(target, source, img, magnify) {
+	$.zoom = function (target, source, img, magnify) {
 		var targetHeight,
 			targetWidth,
 			sourceHeight,
@@ -50,7 +50,7 @@
 			.appendTo(target);
 
 		return {
-			init: function() {
+			init: function () {
 				targetWidth = $target.outerWidth();
 				targetHeight = $target.outerHeight();
 
@@ -83,17 +83,17 @@
 	$.fn.zoom = function (options) {
 		return this.each(function () {
 			var
-			settings = $.extend({}, defaults, options || {}),
-			//target will display the zoomed image
-			target = settings.target && $(settings.target)[0] || this,
-			//source will provide zoom location info (thumbnail)
-			source = this,
-			$source = $(source),
-			img = document.createElement('img'),
-			$img = $(img),
-			mousemove = 'mousemove.zoom',
-			clicked = false,
-			touched = false;
+				settings = $.extend({}, defaults, options || {}),
+				//target will display the zoomed image
+				target = settings.target && $(settings.target)[0] || this,
+				//source will provide zoom location info (thumbnail)
+				source = this,
+				$source = $(source),
+				img = document.createElement('img'),
+				$img = $(img),
+				mousemove = 'mousemove.zoom',
+				clicked = false,
+				touched = false;
 
 			// If a url wasn't specified, look for an image element.
 			if (!settings.url) {
@@ -106,7 +106,7 @@
 				}
 			}
 
-			$source.one('zoom.destroy', function(position, overflow){
+			$source.one('zoom.destroy', function (position, overflow) {
 				$source.off(".zoom");
 				target.style.position = position;
 				target.style.overflow = overflow;
@@ -124,12 +124,12 @@
 					// Skip the fade-in for IE8 and lower since it chokes on fading-in
 					// and changing position based on mousemovement at the same time.
 					$img.stop()
-					.fadeTo($.support.opacity ? settings.duration : 0, 1, $.isFunction(settings.onZoomIn) ? settings.onZoomIn.call(img) : false);
+						.fadeTo($.support.opacity ? settings.duration : 0, 1, $.isFunction(settings.onZoomIn) ? settings.onZoomIn.call(img) : false);
 				}
 
 				function stop() {
 					$img.stop()
-					.fadeTo(settings.duration, 0, $.isFunction(settings.onZoomOut) ? settings.onZoomOut.call(img) : false);
+						.fadeTo(settings.duration, 0, $.isFunction(settings.onZoomOut) ? settings.onZoomOut.call(img) : false);
 				}
 
 				// Mouse events
@@ -205,12 +205,12 @@
 								stop();
 							} else {
 								touched = true;
-								start( e.originalEvent.touches[0] || e.originalEvent.changedTouches[0] );
+								start(e.originalEvent.touches[0] || e.originalEvent.changedTouches[0]);
 							}
 						})
 						.on('touchmove.zoom', function (e) {
 							e.preventDefault();
-							zoom.move( e.originalEvent.touches[0] || e.originalEvent.changedTouches[0] );
+							zoom.move(e.originalEvent.touches[0] || e.originalEvent.changedTouches[0]);
 						})
 						.on('touchend.zoom', function (e) {
 							e.preventDefault();
@@ -220,7 +220,7 @@
 							}
 						});
 				}
-				
+
 				if ($.isFunction(settings.callback)) {
 					settings.callback.call(img);
 				}

@@ -452,3 +452,150 @@ footer nav>ul>li>img {
 .show-xs {
     display: none;
 }
+
+
+.login-form,
+.sign-up-form {
+    width: 350px;
+    padding: 25px 20px !important;
+}
+
+.login-logo {
+    display: block;
+    MARgin: 0px auto;
+    width: 50%;
+}
+
+.sign-up-label,
+.access-label {
+    font-size: 22px;
+    margin-top: 30px;
+    float: left;
+}
+
+.form-row {
+    float: left;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.form-row .lbl {
+    font-size: 12px;
+    line-height: 18px;
+    color: #323232;
+    cursor: pointer;
+}
+
+.form-row input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 7px 10px;
+    box-sizing: border-box;
+
+}
+
+.conditions {
+    position: relative;
+    font-size: 12px;
+}
+
+.switch-light {
+    float: left;
+    height: 15px;
+    width: 80px;
+    margin-top: 2px;
+    margin-right: 9px;
+}
+
+.agreement {
+    float: left;
+    height: 40px;
+    margin-left: 90px;
+    margin-top: -10px;
+}
+
+.switch-light.switch-candy input:checked~span span:nth-child(2) {
+    background: #323232 !important;
+    color: #fff !important;
+}
+
+.switch-light.switch-candy input:not(:checked)~span span:nth-child(2) {
+    background: red !important;
+    color: #fff !important;
+}
+
+.switch-light.switch-candy input:not(:checked)~span span:nth-child(1),
+.switch-light.switch-candy input:not(:checked)~span span:first-child,
+    {
+    background: #323232 !important;
+    color: #fff !important;
+}
+
+.switch-light.switch-candy input:checked~span span:nth-child(1) {
+    background: #65d87f;
+    color: #fff !important;
+}
+
+.form-buttons>button {
+    color: #fff;
+    border-radius: 6px;
+    padding: 10px;
+    text-align: center;
+    float: left;
+    width: 100%;
+    font-weight: 700;
+    font-size: 14px;
+    margin: 5px 0px;
+    border: none;
+    background-color: #323232
+}
+
+.btn-join {
+    background-color: #323232;
+}
+
+.btn-join:hover {
+    background-color: black;
+}
+
+.fa-facebook-f {
+    margin-right: 10px;
+}
+
+.btn-facebook {
+    background-color: #4F6AA3 !important;
+
+}
+
+.btn-visa {
+    padding: 0px !important;
+}
+
+.img-visa {
+    width: 100%;
+    height: 36px;
+}
+
+.forgot-pass {
+    float: left;
+    color: blue
+}
+
+.btn-facebook:hover {
+    background-color: #4f74b2;
+}
+
+.fancybox-close-small {
+    color: #323232 !important;
+}
+
+.fancybox-content {
+    border-radius: 5px;
+}
+
+.link-no-color {
+    color: #007cf7;
+    text-decoration: none;
+    font-size: 12px;
+}

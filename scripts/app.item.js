@@ -168,8 +168,16 @@ app.item = {};
         }
         template.find(".product-type").text(item.BrandName);
         template.find(".brand-detail").text(item.Name);
-        template.find(".real-price").text('$' + item.RP + '.00');
-        template.find(".reduced-price").text('$' + item.Price + '.00');
+        var price = item.RP;
+        if (price % 10 == 0)
+            template.find(".real-price").text(app.utils.currencyFormat(price));
+        else
+            template.find(".real-price").text(price);
+        price = item.Price;
+        if (price % 10 == 0)
+            template.find(".reduced-price").text(app.utils.currencyFormat(price));
+        else
+            template.find(".reduced-price").text(price);
 
         template.find(".view-product").attr("href", "product.html?id=" + item.ID + '&saleID=' + this.saleId);
 
