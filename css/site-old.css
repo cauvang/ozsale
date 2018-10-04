@@ -240,6 +240,7 @@ a {
 
 
 .shopping {
+    xposition: relative;
     overflow: auto;
 }
 
@@ -597,39 +598,4 @@ footer nav>ul>li>img {
     color: #007cf7;
     text-decoration: none;
     font-size: 12px;
-}
-
-
-.menu-inner {
-    width: 100%;
-    overflow: auto;
-    display: none;
-    position: absolute;
-    z-index: 99;
-    left: 0;
-    background-color: #fff;
-    margin-top: 10px;
-    padding: 5px 10px;
-    font-size: 14px;
-}
-
-.menu-inner-col {
-    width: 33.33%;
-    float: left;
-}
-
-.menu-inner li {
-    float: initial;
-    color: gray;
-    padding: 5px 10px;
-}
-
-.menu-inner h3 {
-    color: #323232;
-    margin: 0px 5px;
-}
-
-
-.menu-hover:hover .menu-inner {
-    display: block;
 }

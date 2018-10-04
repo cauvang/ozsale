@@ -8,7 +8,6 @@ const func = function () {
         $("#menu-list").html("");
         // console.log("window.location.hash", window.location.hash)
         for (var i = 0; i < items.length; i++) {
-            // console.log(items[i])
             const item = items[i];
             let className = "";
             if (i == items.length - 1) className = "emphasis";
@@ -20,6 +19,7 @@ const func = function () {
 
             $("#menu-list").append("<li rel= '" + item.catId + "' class ='" + activeClass + "'><a data-catId= '" + item.catId + "' href='index.html#" + item.catId + "' class='" + className + "'>" + item.name + "</a></li>")
         }
+        console.log($("#menu-list"))
 
         // set hash for fist item
         if (!window.location.hash) {
