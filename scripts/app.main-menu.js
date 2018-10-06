@@ -6,36 +6,60 @@ app.mainMenu = {}
 const func = function () {
     this.renderMenuList = function (items) {
         $("#menu-list").html("");
-        // console.log("window.location.hash", window.location.hash)
+
         for (var i = 0; i < items.length; i++) {
             const item = items[i];
-            let className = "";
-            if (i == items.length - 1) className = "emphasis";
+            const catId = item.id || "";
 
             var activeClass = "";
             var hash = window.location.hash.substring(1);
 
-            if (hash == item.catId) activeClass = "active";
+            if (hash == catId || (hash == undefined && catId == "")) activeClass = "active";
 
-            $("#menu-list").append("<li rel= '" + item.catId + "' class ='" + activeClass + "'><a data-catId= '" + item.catId + "' href='index.html#" + item.catId + "' class='" + className + "'>" + item.name + "</a></li>")
-        }
-        console.log($("#menu-list"))
+            const li = $("<li></li>").attr("rel", catId).addClass("menu-hover " + activeClass);
+            const a = $("<a></a>").attr("href", "index.html#" + catId).text(item.name);
+            li.append(a)
+            const div = $("<div class='menu-inner'></div>")
+            item.children = item.children || [];
+            for (var j = 0; j < item.children.length; j++) {
+                let child = item.children[j];
+                const div1 = $("<div></div>").addClass("menu-inner-col");
+                const h4 = $("<h4></h4>").text(child.name);
+                div1.append(h4);
 
-        // set hash for fist item
-        if (!window.location.hash) {
-            window.location.hash = items[0].catId;
-            $("#menu-list").find("li:first-child").addClass("active");
+                child.children = child.children || [];
+
+
+                const ul = $("<ul></ul>");
+
+                for (var k = 0; k < child.children.length; k++) {
+                    let grandchild = child.children[k];
+                    const li1 = $("<li></li>").text(grandchild.name);
+                    ul.append(li1);
+                }
+                div1.append(ul);
+
+                div.append(div1);
+
+                li.append(div);
+
+            }
+
+            $("#menu-list").append(li);
+
+
         }
+
         $(window).on('hashchange', function () {
             $("#menu-list li").removeClass("active")
             var hash = window.location.hash.substring(1);
             $("li[rel='" + hash + "']").addClass("active")
-
         });
 
     }
+
     this.loadMenu = function () {
-        const url = "https://ozsale.herokuapp.com/api/menu"
+        const url = "https://ozsale.herokuapp.com/api/shop/menu"
         $.ajax({
             url: url
         }).done(this.renderMenuList);

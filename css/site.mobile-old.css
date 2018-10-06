@@ -242,16 +242,4 @@
         display: none;
 
     }
-
-    .main .search {
-        margin-top: 60px;
-    }
-
-    .hero .hero-big {
-        padding-right: 0px;
-    }
-
-    .hero .hero-small {
-        padding-left: 0px;
-    }
 }

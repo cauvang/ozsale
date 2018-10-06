@@ -101,4 +101,25 @@
     .hide-tablet {
         display: none;
     }
+
+    .menu-inner {
+        padding: 15px 60px;
+    }
+
+    /* .menu-inner-col {
+        width: 100%;
+        float: auto;
+    }
+
+    .menu-inner li {
+        float: initial;
+        color: gray;
+        padding: 5px 10px;
+    }
+
+    .menu-inner h4 {
+        color: #323232;
+        margin: 5px 5px;
+    } */
+
 }

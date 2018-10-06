@@ -5,6 +5,10 @@ app.utils = {};
         return "https://c1.mysalec.com/sales/" + item.ID + "/" + item.ImageID + "/" + item.File
     }
 
+    this.replaceImageUrl = function (item, param) {
+        return item.substring(0, item.length - 4) + param + ".JPG";
+    }
+
     this.getBrandImageUrl = function (item) {
         return "https://c1.mysalec.com/brands/" + item.BrandID + "/" + item.ImageID + "/" + item.File
     }
