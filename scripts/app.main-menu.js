@@ -24,7 +24,9 @@ const func = function () {
             for (var j = 0; j < item.children.length; j++) {
                 let child = item.children[j];
                 const div1 = $("<div></div>").addClass("menu-inner-col");
-                const h4 = $("<h4></h4>").text(child.name);
+                const h4 = $("<h4></h4>");
+                const ah4 = $("<a></a>").attr("href", "item.html#" + child.id).text(child.name)
+                h4.append(ah4);
                 div1.append(h4);
 
                 child.children = child.children || [];
@@ -34,7 +36,9 @@ const func = function () {
 
                 for (var k = 0; k < child.children.length; k++) {
                     let grandchild = child.children[k];
-                    const li1 = $("<li></li>").text(grandchild.name);
+                    const li1 = $("<li></li>");
+                    const ali1 = $("<a></a>").attr("href", "item.html#" + grandchild.id).text(grandchild.name);
+                    li1.append(ali1);
                     ul.append(li1);
                 }
                 div1.append(ul);

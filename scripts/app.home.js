@@ -7,25 +7,40 @@ app.home = {};
     this.init = function () {
         $(window).on('hashchange', this.reloadDataMatchHash.bind(this));
         this.reloadDataMatchHash();
-    }
+        this.onScroll();
+    };
+
+
+
 
     this.reloadDataMatchHash = function () {
+        $(".shopping").remove();
+        this.lastOffset = 0;
+        this.lastGroupType = null;
         var hash = "";
         if (window.location.hash)
             hash = window.location.hash.substring(1);
-        this.loadCategory(hash);
+        this.categoryId = hash;
+        this.loadCategory();
     }
 
-    this.loadCategory = function (categoryId) {
+    this.loadCategory = function () {
+
         const me = this;
-        const url = "https://ozsale.herokuapp.com/api/category?limit=10"; // + categoryId
+        var url = "https://ozsale.herokuapp.com/api/category?limit=10";
+        if (this.categoryId)
+            url += "&category=" + this.categoryId;
+        if (this.lastGroupType)
+            url += "&lastGroupType=" + this.lastGroupType + "&lastGroupOffset=" + this.lastOffset;
+
         $.ajax({
             url: url
         }).done(this.renderCategoryList.bind(me));
+
+
     }
 
     this.renderCategoryList = function (items) {
-        $(".shopping").remove();
         var grps = items.groups;
 
         for (var i = 0; i < grps.length; i++) {
@@ -34,43 +49,62 @@ app.home = {};
             else
                 this.renderSection(grps[i])
         }
-    }
-    this.renderSection = function (section) {
-        if (!section.banners || section.banners.length == 0) return;
-        var html = $("<section class='shopping'><h2> " + section.title + "</h2></section>");
-        var template = $("#shopping-item-template").html();
-        var classes = ['first', 'second', 'third']
-        for (let index = 0; index < section.Sales.length; index++) {
-            const data = section.Sales[index];
-            const className = classes[index % 3];
-            const el = $(template).addClass(className);
-            el.find(".shopping-title").text(data.Name);
-            el.find(".description-top").text(data.Desc);
-            el.find(".img-inner").attr("src", app.utils.getImageUrl(data));
-            el.find("a").attr("href", "item.html?id=" + data.ID + '&name=' + data.Name);
-            if (!data.Desc) {
-                el.find(".description-top").remove();
-            }
-            html.append(el);
 
+        if (grps.length == 0) {
+            console.log("test hide loading icon")
+            $("#loadMore").hide();
+        } else
+            $("#loadMore").show();
+
+
+    }
+    this.renderSection = function (section, ) {
+        if (this.lastGroupType == section.type)
+            this.lastOffset += section.banners.length;
+
+        else {
+            this.lastOffset = section.banners.length
+            this.lastGroupType = section.type;
+            this.itemCount = 0;
         }
-        $(".main").append(html);
 
+        if (!section.banners || section.banners.length == 0) return;
+        var sectionEl = null;
+        if ($("." + section.type).length == 0) {
+            sectionEl = $("<section class='shopping " + section.type + "'><h2  class='category'>" + section.title + "</h2></section>");
+            $(".main").append(sectionEl);
+        } else {
+            sectionEl = $($("." + section.type)[0])
+        }
+        var classes = ['first', 'second', 'third']
+
+        for (let index = 0; index < section.banners.length; index++) {
+            var template = $("#shopping-item-template").html();
+            const data = section.banners[index];
+            const className = classes[this.itemCount % 3];
+            this.itemCount++;
+            const el = $(template).addClass(className);
+
+            el.find(".description-top").text(data.bannerText);
+            el.find(".description-bottom").text(data.description);
+            el.find("a").attr("href", "item.html?id=" + data.destinationId);
+            el.find(".img-inner").attr("src", app.utils.replaceImageUrl(data.image, "_313x294"));
+
+            sectionEl.append(el);
+        }
     }
+
     this.updateHeroItem = function (selector, item, imgParam) {
         var hero = $(selector);
         hero.find(".description-top").text(item.bannerText);
         hero.find(".description-bottom").text(item.description);
         hero.find("a").attr("href", "item.html?id=" + item.destinationId);
         hero.find(".img-inner").attr("src", app.utils.replaceImageUrl(item.image, imgParam));
-        if (!item.description) {
-            hero.find(".description-top").remove();
-        }
-
-
     }
-    this.renderHero = function (heroItem) {
 
+
+
+    this.renderHero = function (heroItem) {
         this.updateHeroItem(".item1", heroItem[0], "_642x603")
         this.updateHeroItem(".item2", heroItem[1], "_313x603")
         this.updateHeroItem(".item3", heroItem[2], "_313x294")
@@ -80,5 +114,18 @@ app.home = {};
         this.updateHeroItem(".item7", heroItem[6], "_313x603")
 
     }
+
+    this.onScroll = function () {
+        me = this;
+        $(window).scroll($.debounce(250, false, function () {
+
+            if ($("#loadMore").visible()) {
+                me.loadCategory(null);
+            }
+
+        }));
+
+    }
+
 
 }).apply(app.home)

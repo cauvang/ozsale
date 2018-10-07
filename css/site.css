@@ -181,7 +181,7 @@ header section {
     width: 100%;
 }
 
-.hero .description-bottom {
+.description-bottom {
     position: absolute;
     bottom: 0;
     padding: 5 10 5 10;
@@ -264,35 +264,45 @@ a {
     text-decoration: none;
 }
 
+.shopping {
+    overflow: auto;
+}
 
 .shopping .shopping-item {
     width: 33.33%;
     float: left;
     position: relative;
     padding-bottom: 15px;
+    height: 294px;
+
 }
 
 .shopping .shopping-item.third .shopping-item-inner {
     padding-left: 5px;
+    position: relative;
 }
 
 .shopping .shopping-item.first .shopping-item-inner {
     padding-right: 5px;
+    position: relative;
+
 }
 
 .shopping .shopping-item.second .shopping-item-inner {
     padding-left: 5px;
     padding-right: 5px;
+    position: relative;
+
 }
 
-.shopping .shopping-title {
+/* .shopping .shopping-title {
     font-size: 16px;
     margin-bottom: 10px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     padding-bottom: 0;
-}
+} */
 
 .category {
     font-size: 20px;
@@ -300,10 +310,10 @@ a {
     margin-bottom: 5px;
 }
 
-.image-box {
+/* .image-box {
     height: 193px;
     position: relative;
-}
+} */
 
 .shopping .date-sale {
     float: right;
@@ -642,16 +652,37 @@ footer nav>ul>li>img {
 
 .menu-inner li {
     float: initial;
-    color: gray;
     padding: 5px 10px;
 }
 
 .menu-inner h4 {
-    color: #323232;
     margin: 5px 5px;
+    padding: 5px 10px;
+
 }
 
 
 .menu-hover:hover .menu-inner {
     display: block;
+}
+
+.menu-inner-col h4 a {
+    color: #323232;
+}
+
+.menu-inner-col li a {
+    color: gray;
+}
+
+.menu-inner li:hover,
+.menu-inner h4:hover {
+    background-color: #eff2f7;
+
+}
+
+#loadMore {
+    height: 60px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
 }

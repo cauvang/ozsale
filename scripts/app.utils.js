@@ -42,4 +42,5 @@ app.utils = {};
             }
         }
     }
+
 }).apply(app.utils)

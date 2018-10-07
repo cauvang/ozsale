@@ -5,14 +5,6 @@
     position: relative;
 }
 
-.side-bar a.selected::before {
-    content: '\f00c';
-    font-family: "Font Awesome 5 Free";
-    font-weight: 700;
-    position: absolute;
-    left: 0;
-}
-
 .no-pos {
     left: 0px;
     right: initial;
@@ -73,34 +65,31 @@ ul {
     content: "";
 }
 
-
-
 .category-level-1>li {
     padding-bottom: 25px;
 }
 
 .category-level-2 {
-    font-size: 14px;
-    font-weight: 500;
-    padding: 3px 5px 3px 25px;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px 0;
     cursor: pointer;
-    position: relative;
 }
 
 .category-level-2>li {
+    font-size: 14px;
+    font-weight: 500;
     padding: 6px 0 0 2px;
     color: gray;
 }
 
 .category-level-3 {
-    color: gray;
-    font-size: 14px;
-    font-style: normal;
-    padding: 3px 5px 3px 25px;
-    font-weight: 500;
+    display: none;
 }
 
 .category-level-3>li {
+    font-size: 12px;
+    font-weight: 500;
     padding: 6px 0 0 10px;
     color: gray;
 }
@@ -252,16 +241,4 @@ ul {
 
 .sold-out {
     display: none;
-}
-
-.text-dark {
-    font-weight: 700;
-}
-
-.fa-times {
-    position: absolute;
-    right: 8px;
-    top: -20px;
-    font-size: 20px;
-    color: gray;
 }

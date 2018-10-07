@@ -18,7 +18,7 @@
     <script src="./scripts/app.js"></script>
     <script src="./scripts/app.utils.js"></script>
     <script src="./scripts/app.home.js"></script>
-    <script src="./scripts/app.user.js"></script>
+    <script src="./scripts/jquery.scroll.js"></script>
 
 </head>
 
@@ -41,9 +41,9 @@
                 <li class="active menu-hover"> <a href="#">Women</a>
                     <div class="menu-inner">
                         <div class="menu-inner-col">
-                            <h4>Clothing</h4>
+                            <h4><a href="#">Clothing</a></h4>
                             <ul>
-                                <li>Dresses</li>
+                                <li><a href="#">Dresses</a></li>
                                 <li>T-shirts</li>
                                 <li>Shirts</li>
                                 <li>Intimates</li>
@@ -301,7 +301,6 @@
 
         </section>
         <!--END ENDING SOON-->
-
         <button class="button-goup" id="btn-goup">
             <i class="fas fa-angle-up"></i></button>
 
@@ -309,19 +308,22 @@
             <div id="shopping-item-template">
                 <div class="shopping-item">
                     <div class="shopping-item-inner">
-                        <h2 class="shopping-title">48 HOUR - Bec & Bridge, Backstage, Finders Keepers & MORE</h2>
-                        <div class="image-box">
+                        <!-- <div class="image-box"> -->
+                        <a href="item.html">
                             <span class="description-top">UP TO 85% OFF</span>
                             <img src="./images/imgBec.JPG" class="img-inner">
-                        </div>
-                        <span class="date-sale">Ending tomorrow</span>
+                            <span class="description-bottom">48 HOUR - Bec & Bridge, Backstage, Finders Keepers & MORE</span>
+                            <span class="date-sale">Ending tomorrow</span>
+                        </a>
+                        <!-- </div> -->
                     </div>
                 </div>
             </div>
-        </div>
     </section>
+    <div id="loadMore">
 
-
+        <img src="./images/loading.svg" width="60" height="60" />
+    </div>
     <footer>
         <div class="footer-container">
             <div class="about">
