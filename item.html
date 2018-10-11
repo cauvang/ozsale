@@ -11,6 +11,9 @@
 
     <link rel="stylesheet" href="./css/site.tablet.css" />
     <link rel="stylesheet" href="./css/item.tablet.css" />
+    <link rel="stylesheet" href="./scripts/ion.rangeSlider-2.2.0/css/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="./scripts/ion.rangeSlider-2.2.0/css/ion.rangeSlider.skinHTML5.css" />
+
 
     <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
@@ -18,6 +21,9 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script src="./scripts/ion.rangeSlider-2.2.0/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+    <script src="./scripts/jquery.scroll.js"></script>
+
     <script src="./scripts/app.js"></script>
     <script src="./scripts/app.main-menu.js"></script>
     <script src="./scripts/app.item.js"></script>
@@ -50,7 +56,6 @@
                 <li><a href="#">Beauty</a></li>
                 <li><a href="#">Personalise</a></li>
                 <li><a href="#" class="emphasis">Clearance</a></li>
-                <!-- <li class="emphasis"><a href="#" >Clearance</a></li> khac j nhau-->
 
             </ul>
         </nav>
@@ -63,59 +68,70 @@
         </div>
         <section class="product-List">
             <div class="side-bar">
-                <ul class="category-level-1">
-                    <li><a href="#" class="link-small-hover text-dark">Category</a>
-                        <ul class="category-level-2">
-                            <i class="fas fa-times"></i>
-                            <li><a href="#" class="link-small-hover selected">Women</a>
-                                <ul class="category-level-3">
-                                    <li><a href="#" class="link-small-hover">Clothing</a></li>
-                                    <li><a href="#" class="link-small-hover">Accessories</a></li>
-                                    <li><a href="#" class="link-small-hover">Footware</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" class="link-small-hover">Home</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="link-small-hover text-dark">Brand</a>
-                        <ul class="category-level-2">
-                            <i class="fas fa-times"></i>
-                            <li><a href="#" class="link-small-hover">Pierre Cardin</a></li>
-                            <li><a href="#" class="link-small-hover">Puma</a></li>
-                        </ul>
-                    </li>
-                    <li class="text-dark">Price
-                        <div class="price-control"></div>
-                    </li>
-                    <li><a href="#" class="link-small-hover text-dark">Size</a>
-                        <ul class="category-level-2">
-                            <i class="fas fa-times"></i>
+                <div class="sidebar-category">
+                    <i class="fas fa-times"></i>
+                    <a href="#" class="text-dark">Category</a>
+                    <ul class="category-level-1">
+                        <li>
+                            <a href="#" class="link-small-hover selected">Women</a>
+                            <ul class="category-level-2">
+                                <li><a href="#" class="link-small-hover">Clothing</a>
+                                    <ul class="category-level-3">
+                                        <li><a href="#" class="link-small-hover">Dresses</a></li>
+                                        <li><a href="#" class="link-small-hover">Shirts</a></li>
+                                    </ul>
+                                </li>
 
-                            <li><a href="#" class="link-small-hover">11-12 (LB)</a></li>
-                            <li><a href="#" class="link-small-hover">9-10 (MB)</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="link-small-hover text-dark">Color</a>
-                        <ul class="category-level-2">
-                            <i class="fas fa-times"></i>
+                                <li><a href="#" class="link-small-hover">Accessories</a></li>
+                                <li><a href="#" class="link-small-hover">Footware</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="link-small-hover">Home</a></li>
+                        <li><a href="#" class="link-small-hover">Kids & Toys</a></li>
+                    </ul>
+                </div>
 
-                            <li><a href="#" class="link-small-hover">red</a></li>
-                            <li><a href="#" class="link-small-hover">black</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="link-small-hover text-dark">Sort</a>
-                        <ul class="category-level-2">
-                            <i class="fas fa-times"></i>
+                <div class="sidebar-brand">
+                    <a href="#" class="text-dark">Brand</a>
+                    <ul class="category-level-1">
+                        <i class="fas fa-times"></i>
+                        <li><a href="#" class="link-small-hover">Pierre Cardin</a></li>
+                        <li><a href="#" class="link-small-hover">Puma</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-price">
+                    <a href="#" class="text-dark">Price</a>
+                    <input type="text" id="price_rangeSlider" name="example_name" value="" />
+                </div>
+                <div class="sidebar-size">
+                    <a href="#" class="text-dark">Size</a>
+                    <ul class="category-level-1">
+                        <i class="fas fa-times"></i>
+                        <li><a href="#" class="link-small-hover">11-12 (LB)</a></li>
+                        <li><a href="#" class="link-small-hover">9-10 (MB)</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-color">
+                    <a href="#" class="text-dark">Color</a>
+                    <ul class="category-level-1">
+                        <i class="fas fa-times"></i>
+                        <li><a href="#" class="link-small-hover">red</a></li>
+                        <li><a href="#" class="link-small-hover">black</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-sort">
+                    <a href="#" class="text-dark">Sort</a>
+                    <ul class="category-level-1">
+                        <i class="fas fa-times"></i>
+                        <li><a href="#" class="link-small-hover">bestselling</a></li>
+                        <li><a href="#" class="link-small-hover">price:low to high</a></li>
+                        <li><a href="#" class="link-small-hover">price:high to low</a></li>
+                    </ul>
+                </div>
+            </div>
 
-                            <li><a href="#" class="link-small-hover">bestselling</a></li>
-                            <li><a href="#" class="link-small-hover">price:low to high</a></li>
-                            <li><a href="#" class="link-small-hover">price:high to low</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <span class="arrow no-pos"><i class="fas fa-angle-left"></i><span class="show-hover-left">Back to
-                        shopping</span></span>
+            <span class="arrow no-pos"><i class="fas fa-angle-left"></i><span class="show-hover-left">Back to
+                    shopping</span></span>
 
 
             </div>
@@ -414,6 +430,11 @@
                 </div>
             </div>
         </div>
+
+        <div id="loadMore">
+            <img src="./images/loading.svg" width="60" height="60" />
+        </div>
+
     </section>
 
 
@@ -459,7 +480,7 @@
     <script>
         app.init();
         app.mainMenu.init();
-        // app.item.init();
+        app.item.init();
     </script>
 </body>
 

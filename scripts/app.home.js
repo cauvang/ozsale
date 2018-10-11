@@ -51,7 +51,6 @@ app.home = {};
         }
 
         if (grps.length == 0) {
-            console.log("test hide loading icon")
             $("#loadMore").hide();
         } else
             $("#loadMore").show();

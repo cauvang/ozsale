@@ -30,15 +30,21 @@ app.utils = {};
     }
 
     this.currencyFormat = function (item) {
-        return "$" + item + ".00";
+        if (item.toString().indexOf('.') > 0)
+            return "$" + item;
+        else
+            return "$" + item + ".00";
     }
     this.getParameterValues = function (param) {
-        var rawUrl = window.location.href.slice(0, window.location.href.indexOf('#'))
+        var rawUrl = window.location.href;
+        if (window.location.href.indexOf('#') > 0)
+            rawUrl = window.location.href.slice(0, window.location.href.indexOf('#'))
+
         var url = rawUrl.slice(window.location.href.indexOf('?') + 1).split('&');
         for (var i = 0; i < url.length; i++) {
             var urlparam = url[i].split('=');
             if (urlparam[0] == param) {
-                return urlparam[1];
+                return decodeURIComponent(urlparam[1]);
             }
         }
     }
