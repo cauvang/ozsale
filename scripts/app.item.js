@@ -15,7 +15,7 @@ app.item = {};
             const item = items[i];
             const catId = item.id || "";
             const li1 = $("<li></li>");
-            const a1 = $("<a></a>").attr("href", "index.html#").text(item.name).addClass("link-small-hover");
+            const a1 = $("<a></a>").attr("href", "item.html#").text(item.name).addClass("link-small-hover");
             li1.append(a1);
 
             const ul2 = $("<ul class='category-level-2'></ul>");
@@ -32,7 +32,7 @@ app.item = {};
                     ul2.addClass("open");
                     selectedClass = "selected";
                 }
-                const a2 = $("<a></a>").attr("href", "index.html#").addClass("link-small-hover " + selectedClass).text(child.name);
+                const a2 = $("<a></a>").attr("href", "item.html#").addClass("link-small-hover " + selectedClass).text(child.name);
                 li2.append(a2);
 
                 const ul3 = $("<ul class='category-level-3'></ul>");
@@ -51,7 +51,7 @@ app.item = {};
                         ul3.addClass("open");
 
                     }
-                    const a3 = $("<a></a>").attr("href", "index.html#").addClass("link-small-hover " + selectedClass).text(grandchild.name);
+                    const a3 = $("<a></a>").attr("href", "item.html#").addClass("link-small-hover " + selectedClass).text(grandchild.name);
                     li3.append(a3);
                 }
             }
@@ -72,7 +72,6 @@ app.item = {};
     }
 
     this.renderSidebar_Sort = function (items) {
-        console.log("sidebar:", items)
         $(".sidebar-sort ul li").remove();
         for (var i = 0; i < items.length; i++) {
             const li = $('<li id="' + items[i].key + '"><a href = "#" class = "link-small-hover">' + items[i].title + '</a></li>');
@@ -82,25 +81,58 @@ app.item = {};
 
     }
     this.loadSidebar = function (items) {
-
+        if (this.siderbarLoaded) return;
         this.renderSidebar_Brand(items[0].values); //name: "skus.brandName"
         this.renderSiderbar_Size(items[1].values); //name: "skus.attributes.size"
         this.renderSidebar_Color(items[3].values); //name: "color"
+        this.siderbarLoaded = true;
+    }
+
+    this.onSidebarBrandClick = function (el) {
+        const me = this;
+        console.log("brandclick", el, el.data());
+        this.ipage = 0;
+        this.filters["skus.brandName"] = [];
+
+        el.toggleClass("selected");
+        const selectedELs = $(".sidebar-brand ul li.selected");
+        selectedELs.each(function (index, el) {
+            me.filters["skus.brandName"].push($(el).data().value)
+        })
+        this.loadItems();
     }
 
     this.renderSidebar_Brand = function (items) {
         $(".sidebar-brand ul li").remove();
+        const me = this;
         for (var i = 0; i < items.length; i++) {
-            const li = $('<li><a href = "#" class = "link-small-hover">' + items[i].value + '</a></li>');
+            const li = $('<li> <a href = "#" class = "link-small-hover" > ' + items[i].value + ' </a></li> ');
             $(".sidebar-brand ul").append(li);
+            li.data(items[i]);
+            li.click(this.onSidebarBrandClick.bind(me, li));
         }
     }
 
+    this.onSidebarSizeClick = function (el) {
+        const me = this;
+        el.toggleClass("selected");
+        this.filters["skus.attributes.size"] = [];
+        this.ipage = 0;
+        const selectedELs = $(".sidebar-size ul li.selected");
+
+        selectedELs.each(function (index, el1) {
+            me.filters["skus.attributes.size"].push($(el1).data().value)
+        })
+        this.loadItems();
+    }
     this.renderSiderbar_Size = function (items) {
         $(".sidebar-size ul li").remove();
+        const me = this;
         for (var i = 0; i < items.length; i++) {
             const li = $('<li><a href = "#" class = "link-small-hover">' + items[i].value + '</a></li>');
             $(".sidebar-size ul").append(li);
+            li.data(items[i]);
+            li.click(this.onSidebarSizeClick.bind(me, li));
         }
     }
     this.renderSidebar_Currency = function (items) {
@@ -109,11 +141,25 @@ app.item = {};
         //       values: Array(500)
         //   }
     }
+    this.onSidebarColorClick = function (ele) {
+        const me = this;
+        this.ipage = 0;
+        ele.toggleClass("selected");
+        this.filters["color"] = []
+        const selectedELs = $(".sidebar-color ul li.selected");
+        selectedELs.each(function (index, el) {
+            me.filters["color"].push($(el).data().value)
+        })
+        this.loadItems();
+    }
     this.renderSidebar_Color = function (items) {
         $(".sidebar-color ul li").remove();
+        me = this;
         for (var i = 0; i < items.length; i++) {
             const li = $('<li><a href = "#" class = "link-small-hover">' + items[i].value + '</a></li>');
             $(".sidebar-color ul").append(li);
+            li.data(items[i]);
+            li.click(this.onSidebarColorClick.bind(me, li));
         }
     }
     this.renderSidebarList = function (items) {
@@ -244,6 +290,9 @@ app.item = {};
 
     this.renderItems = function (items) {
         console.log(items);
+        if (!items || items.length == 0)
+            return;
+
         if (this.ipage == 0) {
             $(".products").html("");
             $(".products-list").html("");
@@ -328,6 +377,8 @@ app.item = {};
         if (this.sort) {
             url += '&sort=' + this.sort;
         }
+        url += "&filters=" + encodeURIComponent(JSON.stringify(this.filters));
+        console.log(url);
         $.ajax({
             url: url
         }).done(this.renderItems.bind(me));
@@ -336,6 +387,7 @@ app.item = {};
         this.saleId = app.utils.getParameterValues("id");
         this.key = app.utils.getParameterValues("key");
         this.ipage = 0;
+        this.filters = {};
 
         this.loadSidebar_Category();
         this.loadSidebar_Sort();
