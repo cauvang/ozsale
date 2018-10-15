@@ -5,17 +5,43 @@ app.item = {};
 
 (function () {
 
-    this.renderSidebar_Category = function (items) {
+    this.onCategoryMenuClick = function (ev) {
+        $(".sidebar-category .selected").removeClass("selected");
+        ev.addClass("selected");
+
+        ul = ev.closest("ul");
+
+        if (ul.hasClass("category-level-1") || ul.hasClass("category-level-2")) {
+            $(".sidebar-category .open").removeClass("open");
+            ul.addClass("open");
+            ev.next().addClass("open");
+        }
+        console.log("menuclick", ev.data());
+        this.saleId = ev.data().id;
+        this.key = ev.data().key;
+        this.ipage = 0;
+        this.loadItems();
+        return false;
+    }
+    this.renderSidebarCategory = function (items) {
         $(".sidebar-category ul").remove();
         const ul1 = $("<ul class='category-level-1'></ul>");
         $(".sidebar-category").append(ul1);
+        var selectedClass = "";
 
         for (var i = 1; i < items.length; i++) {
 
             const item = items[i];
             const catId = item.id || "";
+            if (this.saleId == catId) {
+                ul1.addClass("open");
+                selectedClass = "selected";
+            }
+
             const li1 = $("<li></li>");
-            const a1 = $("<a></a>").attr("href", "item.html#").text(item.name).addClass("link-small-hover");
+            const a1 = $("<a></a>").attr("href", "item.html#").text(item.name).addClass("link-small-hover " + selectedClass);
+            a1.data(item);
+            a1.click(this.onCategoryMenuClick.bind(this, a1));
             li1.append(a1);
 
             const ul2 = $("<ul class='category-level-2'></ul>");
@@ -26,17 +52,20 @@ app.item = {};
                 let child = item.children[j];
                 const li2 = $("<li></li>");
                 ul2.append(li2);
+                const ul3 = $("<ul class='category-level-3 '></ul>");
 
-                var selectedClass = "";
+                selectedClass = "";
                 if (this.saleId == child.id) {
                     ul2.addClass("open");
+                    ul3.addClass("open");
                     selectedClass = "selected";
                 }
                 const a2 = $("<a></a>").attr("href", "item.html#").addClass("link-small-hover " + selectedClass).text(child.name);
+                a2.data(child);
+                a2.click(this.onCategoryMenuClick.bind(this, a2));
                 li2.append(a2);
-
-                const ul3 = $("<ul class='category-level-3'></ul>");
                 li2.append(ul3);
+
 
                 child.children = child.children || [];
                 for (var k = 0; k < child.children.length; k++) {
@@ -52,6 +81,8 @@ app.item = {};
 
                     }
                     const a3 = $("<a></a>").attr("href", "item.html#").addClass("link-small-hover " + selectedClass).text(grandchild.name);
+                    a3.data(grandchild);
+                    a3.click(this.onCategoryMenuClick.bind(this, a3));
                     li3.append(a3);
                 }
             }
@@ -60,7 +91,6 @@ app.item = {};
 
     }
     this.onSidebarSortClick = function (item) {
-        // console.log("dau heo", this, item)
         if (this.sort != item.key) {
             this.ipage = 0;
         }
@@ -71,7 +101,7 @@ app.item = {};
 
     }
 
-    this.renderSidebar_Sort = function (items) {
+    this.renderSidebarSort = function (items) {
         $(".sidebar-sort ul li").remove();
         for (var i = 0; i < items.length; i++) {
             const li = $('<li id="' + items[i].key + '"><a href = "#" class = "link-small-hover">' + items[i].title + '</a></li>');
@@ -80,17 +110,18 @@ app.item = {};
         }
 
     }
+
     this.loadSidebar = function (items) {
         if (this.siderbarLoaded) return;
-        this.renderSidebar_Brand(items[0].values); //name: "skus.brandName"
-        this.renderSiderbar_Size(items[1].values); //name: "skus.attributes.size"
-        this.renderSidebar_Color(items[3].values); //name: "color"
+        this.renderSidebarBrand(items[0].values); //name: "skus.brandName"
+        this.renderSiderbarSize(items[1].values); //name: "skus.attributes.size"
+        this.renderSidebarColor(items[3].values); //name: "color"
         this.siderbarLoaded = true;
     }
 
     this.onSidebarBrandClick = function (el) {
         const me = this;
-        console.log("brandclick", el, el.data());
+        //console.log("brandclick", el, el.data());
         this.ipage = 0;
         this.filters["skus.brandName"] = [];
 
@@ -102,7 +133,7 @@ app.item = {};
         this.loadItems();
     }
 
-    this.renderSidebar_Brand = function (items) {
+    this.renderSidebarBrand = function (items) {
         $(".sidebar-brand ul li").remove();
         const me = this;
         for (var i = 0; i < items.length; i++) {
@@ -125,7 +156,8 @@ app.item = {};
         })
         this.loadItems();
     }
-    this.renderSiderbar_Size = function (items) {
+    this.renderSiderbarSize = function (items) {
+
         $(".sidebar-size ul li").remove();
         const me = this;
         for (var i = 0; i < items.length; i++) {
@@ -135,12 +167,8 @@ app.item = {};
             li.click(this.onSidebarSizeClick.bind(me, li));
         }
     }
-    this.renderSidebar_Currency = function (items) {
-        //   2: {
-        //       name: "skus.attributesForFaceting.aud",
-        //       values: Array(500)
-        //   }
-    }
+
+
     this.onSidebarColorClick = function (ele) {
         const me = this;
         this.ipage = 0;
@@ -152,7 +180,7 @@ app.item = {};
         })
         this.loadItems();
     }
-    this.renderSidebar_Color = function (items) {
+    this.renderSidebarColor = function (items) {
         $(".sidebar-color ul li").remove();
         me = this;
         for (var i = 0; i < items.length; i++) {
@@ -162,134 +190,16 @@ app.item = {};
             li.click(this.onSidebarColorClick.bind(me, li));
         }
     }
-    this.renderSidebarList = function (items) {
-        $("#current-sale-item").text(items.Name); //render breakcrum
-
-        $(".side-bar").html("");
-        let categories = [];
-        if (items.Categories) {
-            categories = items.Categories;
-        } else {
-            categories.push({
-                Name: items.Name,
-                ID: items.ID,
-                SubCategories: items.SubCategories
-            })
-        }
-
-        for (var i = 0; i < categories.length; i++) {
-            const item = categories[i];
-            const ulLevel1 = $("<ul class='category-level-1 sidebar-item'/>");
-            const li1 = $('<li><a  data-category="' + item.ID + '" href="#" class="link-small-hover text-dark">' + item.Name + '</a></li>');
-            const ulLevel2 = $("<ul class='category-level-2'/>");
-
-            for (var j = 0; j < item.SubCategories.length; j++) {
-                const item2 = item.SubCategories[j];
-                const li2 = $('<li><a data-category="' + item2.ID + '" href="#" class="link-small-hover">' + item2.Name + '</a></li>');
-                if (item2.Sizes) {
-                    const ulLevel3 = $("<ul class='category-level-3'/>");
-
-                    for (var k = 0; k < item2.Sizes.length; k++) {
-                        const item3 = item2.Sizes[k];
-                        const li3 = $('<li><a  data-category="' + item3.Name + '" href="#" class="link-small-hover">' + item3.Name + '</a></li>');
-                        ulLevel3.append(li3);
-                    }
-                    li2.append(ulLevel3);
-                }
-                ulLevel2.append(li2);
-            }
-            li1.append(ulLevel2);
-            ulLevel1.append(li1);
-            $(".side-bar").append(ulLevel1)
-        }
-        const me = this;
-        setTimeout(function () {
-            $(".side-bar a").click(me.onSidebarClick);
-
-        }, 100)
-
-
+    this.onSidebarPriceChange = function (data) {
+        this.ipage = 0;
+        this.filters["skus.attributesForFaceting.aud"] = [data.from + " to " + data.to];
+        this.loadItems();
     }
 
-    this.onSidebarClick = function () {
-        $(".cat-li").remove();
 
-        const links = [];
-        const el = $(this);
-        var li = el.closest("li");
-        var ul = li.parent();
-        var parentId = "";
-        if ($(li).parent().hasClass("category-level-3")) {
-            var aLevel2 = ul.prev();
-            parentId = aLevel2.data().category;
-
-            var aLevel1 = aLevel2.closest("li").parent().prev();
-            links.push({
-                text: aLevel1.text(), //level1,
-                id: aLevel1.data().category,
-            });
-            links.push({
-                text: aLevel2.text(), //level2,
-                id: aLevel2.data().category,
-            });
-            links.push({
-                text: el.text() //level3
-            })
-
-        }
-
-        if ($(li).parent().hasClass("category-level-2")) {
-            var aLevel1 = ul.prev();
-            links.push({
-                text: aLevel1.text(), //level1
-                id: aLevel1.data().category,
-
-            });
-            links.push({
-                text: el.text(), //level2
-                id: el.data().category,
-
-            });
-            // $(".category-level-3").hide();
-
-            li.find("ul").show();
-        }
-
-        if ($(li).parent().hasClass("category-level-1")) {
-            links.push({
-                text: el.text(),
-                id: el.data().category,
-
-            })
-        }
-        for (const link of links) {
-            var liElement = $('<li id="category-li" class="cat-li" data-ref="' + link.id + '">' + link.text + "</li>")
-            liElement.click(function () {
-                console.log($(this).data(), link)
-            })
-            $(".page-breakcrum").append(liElement)
-        }
-
-        var saleItems = $(".product-item-wrapper");
-        console.log("parentId", parentId)
-        saleItems.each(function (index, saleItem) {
-            const menuCategory = el.data().category;
-
-            const itemData = $(saleItem).data();
-
-            if ($(saleItem).data()["category"] == menuCategory ||
-                $(saleItem).data()["parentCategory"] == menuCategory ||
-                $(saleItem).data()["grandParentCategory"] == menuCategory ||
-                (itemData.sizes && itemData.sizes.indexOf(menuCategory) >= 0 && itemData.parentCategory == parentId))
-                $(saleItem).show();
-            else
-                $(saleItem).hide();
-
-        })
-    }
 
     this.renderItems = function (items) {
-        console.log(items);
+        // console.log(items);
         if (!items || items.length == 0)
             return;
 
@@ -348,40 +258,65 @@ app.item = {};
 
     }
 
-    this.onBreakcrumClick = function () {
-        $(".product-item-wrapper").show();
-        //   console.log(this.data())
-        if ($("#category-li[data-ref]") == $(".side-bar a[data-category]")) {
-            console.log("testt");
-        }
 
-    }
 
-    this.loadSidebar_Category = function () {
+    this.loadSidebarCategory = function () {
         const url = "https://ozsale.herokuapp.com/api/shop/menu"; // + "/categories"
         $.ajax({
             url: url
-        }).done(this.renderSidebar_Category.bind(app.item));
+        }).done(this.renderSidebarCategory.bind(app.item));
 
     }
-    this.loadSidebar_Sort = function () {
+    this.loadSidebarSort = function () {
         const url = "https://ozsale.herokuapp.com/api/shop/sorting";
         $.ajax({
             url: url
-        }).done(this.renderSidebar_Sort.bind(app.item));
+        }).done(this.renderSidebarSort.bind(app.item));
     }
 
     this.loadItems = function () {
         const me = this;
-        var url = 'https://ozsale.herokuapp.com/api/saleItems?category=["' + this.key + '"]&page=' + this.ipage + '&pageSize=10';
+        const category = [];
+        var url = 'https://ozsale.herokuapp.com/api/saleItems?category=';
+
+        if (this.key)
+            category.push(encodeURIComponent(this.key));
+
+        url += JSON.stringify(category);
+
+        url += '&page=' + this.ipage + '&pageSize=10';
         if (this.sort) {
             url += '&sort=' + this.sort;
         }
         url += "&filters=" + encodeURIComponent(JSON.stringify(this.filters));
-        console.log(url);
+
+        console.log("url", url)
         $.ajax({
             url: url
         }).done(this.renderItems.bind(me));
+    }
+
+    this.clearFilter = function () {
+        const div = $(this).closest("div");
+        console.log("div", div.data())
+        const ul = div.find("ul");
+
+        div.find(".selected").removeClass("selected");
+
+        const me = app.item;
+        me.ipage = 0;
+
+        const filter = div.data().reset;
+        if (filter == "sort")
+            this.sort = null;
+        else if (filter == "category") {
+            div.find(".open").removeClass("open");
+            div.find(".category-level-1").addClass("open");
+            me.key = null;
+        } else
+            me.filters[filter] = [];
+        me.loadItems();
+
     }
     this.init = function () {
         this.saleId = app.utils.getParameterValues("id");
@@ -389,23 +324,27 @@ app.item = {};
         this.ipage = 0;
         this.filters = {};
 
-        this.loadSidebar_Category();
-        this.loadSidebar_Sort();
+        this.loadSidebarCategory();
+        this.loadSidebarSort();
         this.loadItems();
 
 
-        // $("#current-sale-item").click(this.onBreakcrumClick);
-
+        me = this;
         $("#price_rangeSlider").ionRangeSlider({
             type: "double",
             grid: true,
             min: 0,
             max: 100,
-            from: 1,
-            to: 8,
-            prefix: "$"
+            from1: 1,
+            to1: 8,
+            prefix: "$",
+            onFinish: function (data) {
+                me.onSidebarPriceChange(data);
+            }
         });
         this.onScroll();
+
+        $(".fa-times").click(this.clearFilter);
     }
 
     this.onScroll = function () {

@@ -286,13 +286,6 @@ ul {
     color: gray;
 }
 
-/* .category-level-2 li ul {
-    display: none;
-}
-
-.category-level-2 ul.open li ul.open {
-    display: block;
-} */
 
 .category-level-1 ul {
     display: none;
