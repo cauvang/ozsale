@@ -16,7 +16,8 @@ app.item = {};
             ul.addClass("open");
             ev.next().addClass("open");
         }
-        console.log("menuclick", ev.data());
+        ul.closest("div").addClass("has-filter");
+        //console.log("menuclick", ev.data());
         this.saleId = ev.data().id;
         this.key = ev.data().key;
         this.ipage = 0;
@@ -88,7 +89,7 @@ app.item = {};
             }
             ul1.append(li1);
         }
-
+        $(".sidebar-category").addClass("has-filter");
     }
     this.onSidebarSortClick = function (item) {
         if (this.sort != item.key) {
@@ -97,6 +98,7 @@ app.item = {};
         $(".sidebar-sort ul li").removeClass("selected");
         $("#" + item.key).addClass("selected");
         this.sort = item.key;
+        $(".sidebar-sort").addClass("has-filter");
         this.loadItems();
 
     }
@@ -130,6 +132,11 @@ app.item = {};
         selectedELs.each(function (index, el) {
             me.filters["skus.brandName"].push($(el).data().value)
         })
+        if (selectedELs.length > 0)
+            el.closest("div").addClass("has-filter");
+        else
+            el.closest("div").removeClass("has-filter");
+
         this.loadItems();
     }
 
@@ -154,6 +161,11 @@ app.item = {};
         selectedELs.each(function (index, el1) {
             me.filters["skus.attributes.size"].push($(el1).data().value)
         })
+        if (selectedELs.length > 0)
+            el.closest("div").addClass("has-filter");
+        else
+            el.closest("div").removeClass("has-filter");
+
         this.loadItems();
     }
     this.renderSiderbarSize = function (items) {
@@ -169,15 +181,20 @@ app.item = {};
     }
 
 
-    this.onSidebarColorClick = function (ele) {
+    this.onSidebarColorClick = function (el) {
         const me = this;
         this.ipage = 0;
-        ele.toggleClass("selected");
+        el.toggleClass("selected");
         this.filters["color"] = []
         const selectedELs = $(".sidebar-color ul li.selected");
-        selectedELs.each(function (index, el) {
-            me.filters["color"].push($(el).data().value)
+        selectedELs.each(function (index, el1) {
+            me.filters["color"].push($(el1).data().value)
         })
+        if (selectedELs.length > 0)
+            el.closest("div").addClass("has-filter");
+        else
+            el.closest("div").removeClass("has-filter");
+
         this.loadItems();
     }
     this.renderSidebarColor = function (items) {
@@ -313,8 +330,13 @@ app.item = {};
             div.find(".open").removeClass("open");
             div.find(".category-level-1").addClass("open");
             me.key = null;
+
         } else
             me.filters[filter] = [];
+
+        div.removeClass("has-filter");
+
+
         me.loadItems();
 
     }
@@ -327,7 +349,6 @@ app.item = {};
         this.loadSidebarCategory();
         this.loadSidebarSort();
         this.loadItems();
-
 
         me = this;
         $("#price_rangeSlider").ionRangeSlider({
