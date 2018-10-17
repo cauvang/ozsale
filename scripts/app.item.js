@@ -15,6 +15,7 @@ app.item = {};
             $(".sidebar-category .open").removeClass("open");
             ul.addClass("open");
             ev.next().addClass("open");
+            console.log("xxxx", ev.next())
         }
         ul.closest("div").addClass("has-filter");
         //console.log("menuclick", ev.data());
@@ -25,15 +26,16 @@ app.item = {};
         return false;
     }
     this.renderSidebarCategory = function (items) {
-        $(".sidebar-category ul").remove();
-        const ul1 = $("<ul class='category-level-1'></ul>");
-        $(".sidebar-category").append(ul1);
+        $(".sidebar-category").addClass("expanded");
+        $(".sidebar-category .category-level-1").html("");
+        const ul1 = $(".sidebar-category .category-level-1");
+        //$(".sidebar-category").append(ul1);
         var selectedClass = "";
 
         for (var i = 1; i < items.length; i++) {
 
             const item = items[i];
-            const catId = item.id || "";
+            const catId = item.id || ""
             if (this.saleId == catId) {
                 ul1.addClass("open");
                 selectedClass = "selected";
@@ -307,7 +309,7 @@ app.item = {};
         }
         url += "&filters=" + encodeURIComponent(JSON.stringify(this.filters));
 
-        console.log("url", url)
+        // console.log("url", url)
         $.ajax({
             url: url
         }).done(this.renderItems.bind(me));
@@ -366,6 +368,18 @@ app.item = {};
         this.onScroll();
 
         $(".fa-times").click(this.clearFilter);
+        $(".sidebar-category .fa-angle-up").click(this.hideSidebarCategory);
+        $(".sidebar-category .fa-angle-down").click(this.showSidebarCategory);
+
+    }
+
+    this.hideSidebarCategory = function () {
+        console.log("clicked")
+        $(".sidebar-category").removeClass("expanded");
+    }
+    this.showSidebarCategory = function () {
+        console.log("clicked")
+        $(".sidebar-category").addClass("expanded");
     }
 
     this.onScroll = function () {
