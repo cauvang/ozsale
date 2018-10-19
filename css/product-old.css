@@ -10,6 +10,21 @@
     line-height: 1.4;
 }
 
+.small-images {
+    width: 60px;
+    float: left;
+    position: absolute;
+    top: 0px;
+}
+
+.big-image {
+    width: 100%;
+    padding-right: 25px;
+}
+
+.img-small {
+    width: 100%;
+}
 
 .img-big {
     width: 100%;
@@ -79,21 +94,10 @@ a:hover .img-big {
     font-size: 24px;
 }
 
-/* .button-border .buttons {
+.button-border .buttons {
     border-style: solid;
     border-color: gray;
     border-width: 1px;
-} */
-
-.buttons {
-    font-weight: 700;
-    font-size: 14px;
-    font-style: normal;
-    color: #323232;
-    border: 1px solid #ccc;
-    padding: 7px 12px;
-    margin: 0 5px 5px 0;
-    border-radius: 4px;
 }
 
 .select {
@@ -123,13 +127,10 @@ a:hover .img-big {
 .delivery {
     font-size: 12px;
     margin-top: 15px;
-    line-height: 2em;
 }
-
 
 #product-desc {
     float: left;
-    margin-top: 35px;
 }
 
 .product-description {
@@ -138,7 +139,7 @@ a:hover .img-big {
 
 .product-name {
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 500;
     color: #323232;
     margin-bottom: 5px;
 }
@@ -154,17 +155,17 @@ a:hover .img-big {
     font-size: 12px;
 }
 
-/* .arrow-back {
+.arrow-back {
     margin-top: 20px;
     padding: 5 10 5 10;
     background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
     overflow: hidden;
     float: left;
-} */
+}
 
 
-/* 
+
 .arrow-back:hover {
     overflow: auto;
     width: 100px;
@@ -182,7 +183,7 @@ a:hover .img-big {
     position: absolute;
     transition: all 1.5s ease;
     color: white;
-} */
+}
 
 
 
@@ -288,28 +289,4 @@ header .shopping-cart.not-empty .cart-empty-text {
 
 .img-select {
     border: 1px solid red;
-}
-
-.brand-description {
-    border-radius: 10px;
-    padding: 25px 30px 20px;
-    margin: 15px 0 30px;
-    font-weight: 400;
-    font-size: 14px;
-    font-style: normal;
-    color: gray;
-    line-height: 22px;
-    background-color: #ccc;
-}
-
-.pricing-hint {
-    display: none;
-}
-
-.show-hint.pricing-hint {
-    display: block;
-    z-index: 999;
-    border: 1px solid grey;
-    width: 100%;
-    margin-top: 15px;
 }

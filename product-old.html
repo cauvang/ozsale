@@ -93,14 +93,32 @@
                 <li><a href="#">Beauty</a></li>
                 <li><a href="#">Personalise</a></li>
                 <li><a href="#" class="emphasis">Clearance</a></li>
+                <!-- <li class="emphasis"><a href="#" >Clearance</a></li>-->
+
             </ul>
         </nav>
     </header>
 
     <section class="main">
-        <div class="product-detail">
+        <ul class="page-breakcrum">
+            <li><a href="#" class="link-small-hover">Shop</a></li>
+            <li><a href="#" class="link-small-hover">Adidas Footwear</a></li>
+            <li><a href="#" class="link-small-hover">Womens Shoes</a></li>
+            <li><a href="#" class="link-small-hover">Sneakers</a></li>
+
+        </ul>
+
+        <div style="clear: both">
             <div class="view-product">
-                <img class="img-big" src="https://c1.mysalec.com/brands/bd06ad44-8ff6-4d02-9558-bfae65cd312c/f8f33dd4-3286-4138-8b87-76334f4cd598/c7ec5981-42c9-4c6c-ad3b-690e6c1c16f6.JPG">
+
+                <div class="big-image"><img class="img-big" src="https://c1.mysalec.com/brands/bd06ad44-8ff6-4d02-9558-bfae65cd312c/f8f33dd4-3286-4138-8b87-76334f4cd598/c7ec5981-42c9-4c6c-ad3b-690e6c1c16f6.JPG"></div>
+                <div class="small-images">
+                    <ul id="image-navigator">
+                        <li><a href="#"><img class="img-select img-small" src="./images/Shoe.jpg"></a></li>
+                        <li><a href="#"><img class="img-small" src="./images/Shoe.jpg"></a></li>
+                        <li><a href="#"><img class="img-small" src="./images/Shoe.jpg"></a></li>
+                    </ul>
+                </div>
             </div>
 
             <div class="view-product-detail">
@@ -110,12 +128,12 @@
                 </div>
 
                 <div class="product-price">
+                    <!-- <div class="label-text">Price elsewhere</div> -->
                     <div class="price-text">$140.00</div>
                     <div><img class="img-tooltip" src="./images/imgTooltip.png"></div>
-
+                    <div class="website-label-text">ozsale.com.au:</div>
                     <div class="website-price-text">$65.00</div>
-                    <img class="img-tooltip" src="./images/imgTooltip.png">
-                    <div class="pricing-hint"></div>
+                    <div><img class="img-tooltip" src="./images/imgTooltip.png"></div>
                 </div>
                 <div class="pay-now-container">
                     <span>Pay less today with</span>
@@ -126,23 +144,35 @@
                         <span class="pay-now-count">x4</span>
                     </div>
                 </div>
-                <div class="size-container">
-                    <div>Select size</div>
-                    <button class="buttons select">AU8</button>
-                    <button class="buttons">AU10</button>
-                    <button class="buttons">AU12</button>
-                    <button class="buttons">AU14</button>
+                <div class="controls button-border ">
+                    <div class="size-container">
+                        <div>Select size</div>
+                        <button class="buttons select btn-size">AU8</button>
+                        <button class="buttons btn-size">AU10</button>
+                        <button class="buttons btn-size">AU12</button>
+                        <button class="buttons btn-size">AU14</button>
+                    </div>
+                    <div class="quantity-container">
+                        <div>Select quantity</div>
+                        <Button class="buttons btn-quantity">1</Button>
+                        <Button class="buttons btn-quantity">2</Button>
+                        <Button class="buttons select btn-quantity">3</Button>
+                        <Button class="buttons btn-quantity">4</Button>
+                        <Button class="buttons btn-quantity">5</Button>
+                    </div>
+                    <div>
+                        <button class="add-to-cart-button" data-fancybox data-src="#hidden-content">Add to cart</button>
+                    </div>
                 </div>
                 <div>
-                    <button class="add-to-cart-button" data-fancybox data-src="#hidden-content">Add To Basket</button>
-                </div>
-                <div class="delivery">
-                    <strong>Estimated Delivery</strong>
-                    <div class="delivery-date">09/10/18 - 14/10/18</div>
-                    <div class="shipping-info">Orders are dispatched directly to you from the UK</div>
+                    <div class="delivery">
+                        <strong>Estimated Delivery</strong><br />
+                        09/10/18 - 14/10/18<br />
+                        Orders are dispatched directly to you from the UK.<br />
 
-                    <strong>Return Policy</strong>
-                    <div class="return-policy"> Please refer to Return Policy</div>
+                        <br /><strong>Return Policy</strong><br />
+                        Please refer to Return Policy
+                    </div>
                 </div>
                 <button class="button-goup">
                     <i class="fas fa-angle-up"></i>
@@ -160,17 +190,16 @@
                     <li>Colour: Cognac </li>
                 </ul>
                 <strong>Measurements</strong><br />
-                <div><a href="#">Size Guide</a> </div>
+                <div><a class="link-no-color" href="#">Size Guide</a> </div>
                 <hr>
                 <strong>About Helium</strong> <br />
                 <i>Using only high quality leather, Helium leads rather than follows major fashion trends. With true
                     British style and feel, its traditional qualities offer classic designs in addition to more edgy
                     styles.</i><br />
             </div>
-            <div class="brand-description">
-                abdd
-            </div>
+
         </div>
+        <span class="arrow-back"><i class="fas fa-angle-left"></i><span class="arrow-back-show-hover-left">Back</span></span>
 
     </section>
 

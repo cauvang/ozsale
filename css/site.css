@@ -118,7 +118,7 @@ header section {
     position: relative;
     overflow: auto;
     width: 100%;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 
 .main .search-input {
@@ -258,9 +258,13 @@ header section {
     font-size: 13px;
 }
 
-
+/* 
 a {
     color: #fff;
+    text-decoration: none;
+} */
+
+.link-no-underline {
     text-decoration: none;
 }
 
@@ -625,12 +629,12 @@ footer nav>ul>li>img {
     border-radius: 5px;
 }
 
+
 .link-no-color {
     color: #007cf7;
     text-decoration: none;
     font-size: 12px;
 }
-
 
 .menu-inner {
     width: 100%;

@@ -68,9 +68,9 @@
         </div>
         <section class="product-List">
             <div class="side-bar">
-                <div class="sidebar-category" data-reset="category">
+                <div class="sidebar-category expandable" data-reset="category">
                     <i class="fas fa-times clear-filter"></i>
-                    <a href="#" class="text-dark">Category</a>
+                    <a href="#" class="text-dark link-no-underline">Category</a>
                     <ul class="category-level-1">
                         <li>
                             <a href="item.html" class="link-small-hover selected">Women</a>
@@ -86,39 +86,56 @@
                         <li><a href="#" class="link-small-hover">Footware</a></li>
                     </ul>
 
-                    <div class="center"><i class="fas fa-angle-down size-28"></i>
-                        <i class="fas fa-angle-up size-28"></i></div>
-
+                    <div class="center">
+                        <i class="fas fa-angle-down size-28"></i>
+                        <i class="fas fa-angle-up size-28"></i>
+                    </div>
                 </div>
 
-                <div class="sidebar-brand" data-reset="skus.brandName">
+                <div class="sidebar-brand expandable" data-reset="skus.brandName">
                     <i class="fas fa-times clear-filter"></i>
                     <a href="#" class="text-dark">Brand</a>
                     <ul class="category-level-1">
                         <li><a href="#" class="link-small-hover">Pierre Cardin</a></li>
                         <li><a href="#" class="link-small-hover">Puma</a></li>
                     </ul>
+                    <div class="center">
+                        <i class="fas fa-angle-down size-28"></i>
+                        <i class="fas fa-angle-up size-28"></i>
+                    </div>
                 </div>
+
                 <div class="sidebar-price" data-reset="skus.attributesForFaceting.aud">
                     <a href="#" class="text-dark">Price</a>
                     <input type="text" id="price_rangeSlider" name="example_name" value="" />
                 </div>
-                <div class="sidebar-size" data-reset="skus.attributes.size">
+
+                <div class="sidebar-size expandable" data-reset="skus.attributes.size">
                     <i class="fas fa-times clear-filter"></i>
                     <a href="#" class="text-dark">Size</a>
                     <ul class="category-level-1">
                         <li><a href="#" class="link-small-hover">11-12 (LB)</a></li>
                         <li><a href="#" class="link-small-hover">9-10 (MB)</a></li>
                     </ul>
+                    <div class="center">
+                        <i class="fas fa-angle-down size-28"></i>
+                        <i class="fas fa-angle-up size-28"></i>
+                    </div>
                 </div>
-                <div class="sidebar-color" data-reset="color">
+
+                <div class="sidebar-color expandable" data-reset="color">
                     <i class="fas fa-times clear-filter"></i>
                     <a href="#" class="text-dark">Color</a>
                     <ul class="category-level-1">
                         <li><a href="#" class="link-small-hover">red</a></li>
                         <li><a href="#" class="link-small-hover">black</a></li>
                     </ul>
+                    <div class="center">
+                        <i class="fas fa-angle-down size-28"></i>
+                        <i class="fas fa-angle-up size-28"></i>
+                    </div>
                 </div>
+
                 <div class="sidebar-sort" data-reset="sort">
                     <i class=" fas fa-times clear-filter"></i>
                     <a href="#" class="text-dark">Sort</a>
@@ -137,18 +154,21 @@
                         <div class="controls">
                             <div class="size-container">
                                 <div>Choose your size</div>
-                                <button class="buttons btn-size">AU8</button>
-                                <button class="buttons btn-size">AU10</button>
-                                <button class="buttons btn-size">AU14</button>
+                                <div class="buttons">
+                                    <button class="btn-size">AU8</button>
+                                    <button class="btn-size">AU10</button>
+                                    <button class="btn-size">AU12</button>
+                                </div>
+                                <a class="link-no-color" href="product.html"> More sizes ...</a>
                             </div>
-                            <div>
-                                <button class="buttons-opp">Add to basket</button>
-                            </div>
+                            <!-- <div> -->
+                            <button class="buttons-opp">Add to basket</button>
+                            <!-- </div> -->
                         </div>
                     </div>
 
                     <div class="product-detail">
-                        <div class="product-type">Skechers</div>
+                        <div class="product-type text-dark">Skechers</div>
                         <div class="brand-detail">Bora Casual Shoe - Gray/Turquoise</div>
                         <div class="price">
                             <span class="real-price">$99.95</span>
@@ -165,9 +185,13 @@
                         <div class="controls">
                             <div class="size-container">
                                 <div>Choose your size</div>
-                                <button class="buttons btn-size">AU8</button>
-                                <button class="buttons btn-size">AU10</button>
-                                <button class="buttons btn-size">AU12</button>
+                                <div class="buttons">
+                                    <button class="btn-size">AU8</button>
+                                    <button class="btn-size">AU10</button>
+                                    <button class="btn-size">AU12</button>
+                                </div>
+                                <a class="link-no-color" href="product.html"> More sizes ...</a>
+
                             </div>
                             <div>
                                 <button class="buttons-opp">Add to basket</button>
@@ -195,31 +219,36 @@
         <div style="display:none">
             <div id="product-item-template">
                 <div class="col-4 product-item-wrapper">
-                    <div class="item-wrapper-inner">
-                        <img class="wrapper-image" src="./images/imgPant.JPG">
-                        <div class="controls">
-                            <div class="size-container">
-                                <div>Select size</div>
-                                <button class="buttons btn-size">AU8</button>
-                                <button class="buttons btn-size">AU10</button>
-                                <button class="buttons btn-size">AU12</button>
-                            </div>
-                            <Label class="sold-out"></Label>
-                            <div>
+                    <a class="view-product link-no-underline" href=" product.html">
+                        <div class="item-wrapper-inner">
+                            <img class="wrapper-image" src="./images/imgPant.JPG">
+                            <div class="controls">
+                                <div class="size-container">
+                                    <div>Choose your size</div>
+                                    <div class="buttons">
+                                        <button class="btn-size">AU8</button>
+                                        <button class="btn-size">AU10</button>
+                                        <button class="btn-size">AU12</button>
+                                    </div>
+                                    <a class="link-no-color more-size" href="product.html"> More sizes ...</a>
+
+                                </div>
+                                <Label class="sold-out"></Label>
+                                <!-- <div> -->
                                 <button class="buttons-opp">Add to basket</button>
+                                <!-- </div> -->
                             </div>
                         </div>
-                    </div>
 
-                    <div class="product-detail">
-                        <div class="product-type">Skechers</div>
-                        <div class="brand-detail">Bora Casual Shoe - Gray/Turquoise</div>
-                        <div class="price">
-                            <span class="real-price">$99.95</span>
-                            <span class="reduced-price">$59.00</span>
+                        <div class="product-detail">
+                            <div class="product-type">Skechers</div>
+                            <div class="brand-detail">Bora Casual Shoe - Gray/Turquoise</div>
+                            <div class="price">
+                                <span class="real-price">$99.95</span>
+                                <span class="reduced-price">$59.00</span>
+                            </div>
                         </div>
-                    </div>
-
+                    </a>
                 </div>
             </div>
         </div>

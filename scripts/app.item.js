@@ -15,10 +15,8 @@ app.item = {};
             $(".sidebar-category .open").removeClass("open");
             ul.addClass("open");
             ev.next().addClass("open");
-            console.log("xxxx", ev.next())
         }
         ul.closest("div").addClass("has-filter");
-        //console.log("menuclick", ev.data());
         this.saleId = ev.data().id;
         this.key = ev.data().key;
         this.ipage = 0;
@@ -29,7 +27,6 @@ app.item = {};
         $(".sidebar-category").addClass("expanded");
         $(".sidebar-category .category-level-1").html("");
         const ul1 = $(".sidebar-category .category-level-1");
-        //$(".sidebar-category").append(ul1);
         var selectedClass = "";
 
         for (var i = 1; i < items.length; i++) {
@@ -125,7 +122,6 @@ app.item = {};
 
     this.onSidebarBrandClick = function (el) {
         const me = this;
-        //console.log("brandclick", el, el.data());
         this.ipage = 0;
         this.filters["skus.brandName"] = [];
 
@@ -144,10 +140,13 @@ app.item = {};
 
     this.renderSidebarBrand = function (items) {
         $(".sidebar-brand ul li").remove();
+        $(".sidebar-brand").addClass("expanded");
+        const ul = $(".sidebar-brand ul");
+
         const me = this;
         for (var i = 0; i < items.length; i++) {
             const li = $('<li> <a href = "#" class = "link-small-hover" > ' + items[i].value + ' </a></li> ');
-            $(".sidebar-brand ul").append(li);
+            ul.append(li);
             li.data(items[i]);
             li.click(this.onSidebarBrandClick.bind(me, li));
         }
@@ -171,12 +170,13 @@ app.item = {};
         this.loadItems();
     }
     this.renderSiderbarSize = function (items) {
-
+        $(".sidebar-size").addClass("expanded");
         $(".sidebar-size ul li").remove();
+        const ul = $(".sidebar-size ul");
         const me = this;
         for (var i = 0; i < items.length; i++) {
             const li = $('<li><a href = "#" class = "link-small-hover">' + items[i].value + '</a></li>');
-            $(".sidebar-size ul").append(li);
+            ul.append(li);
             li.data(items[i]);
             li.click(this.onSidebarSizeClick.bind(me, li));
         }
@@ -200,11 +200,13 @@ app.item = {};
         this.loadItems();
     }
     this.renderSidebarColor = function (items) {
+        $(".sidebar-color").addClass("expanded");
         $(".sidebar-color ul li").remove();
+        const ul = $(".sidebar-color ul");
         me = this;
         for (var i = 0; i < items.length; i++) {
             const li = $('<li><a href = "#" class = "link-small-hover">' + items[i].value + '</a></li>');
-            $(".sidebar-color ul").append(li);
+            ul.append(li);
             li.data(items[i]);
             li.click(this.onSidebarColorClick.bind(me, li));
         }
@@ -218,7 +220,7 @@ app.item = {};
 
 
     this.renderItems = function (items) {
-        // console.log(items);
+        // console.log("renderItems", items);
         if (!items || items.length == 0)
             return;
 
@@ -236,7 +238,7 @@ app.item = {};
     }
 
     this.renderItem = function (item, catID, taxonomyTree, count) {
-        //  console.log(item);
+        // console.log("renderItem", item, this.saleId, this.key);
         parentCatID = taxonomyTree[1];
         grandParentCatID = taxonomyTree[0];
         var template = $($("#product-item-template").html());
@@ -245,28 +247,14 @@ app.item = {};
         template.data("grandParentCategory", grandParentCatID);
         template.attr("id", "item_" + count)
         template.find(".wrapper-image").attr("src", item.images[0]);
-        // if (item.Sizes && item.Sizes.length > 0) {
-        //     let sizes = "";
-        //     template.find(".btn-size").remove();
-        //     for (var is = 0; is < item.Sizes.length; is++) {
-        //         sizes += item.Sizes[is].Name + ";"
-        //         template.find(".size-container").append('<button class = "buttons btn-size" >' + item.Sizes[is].Name + '</button>');
-        //     }
-        //     template.data("sizes", sizes)
-
-        // } else
-        //     template.find(".size-container").remove();
-
-        // if (!item.Available) {
-        //     template.find(".sold-out").showhide();
-        //     template.find(".quantity-container").remove();
-        // }
         template.find(".product-type").text(item.brandName);
         template.find(".brand-detail").text(item.name);
         template.find(".real-price").text(app.utils.currencyFormat(item.originalPrice.value));
         template.find(".reduced-price").text(app.utils.currencyFormat(item.price.value));
 
-        //  template.find(".view-product").attr("href", "product.html?id=" + item.ID + '&saleID=' + this.saleId);
+        this.getProductSizes(item.seoIdentifier, template);
+
+        template.find(".view-product").attr("href", "product.html?id=" + encodeURIComponent(item.seoIdentifier));
 
         if (count < 3) {
             template.removeClass("col-4");
@@ -280,7 +268,7 @@ app.item = {};
 
 
     this.loadSidebarCategory = function () {
-        const url = "https://ozsale.herokuapp.com/api/shop/menu"; // + "/categories"
+        const url = "https://ozsale.herokuapp.com/api/shop/menu";
         $.ajax({
             url: url
         }).done(this.renderSidebarCategory.bind(app.item));
@@ -317,7 +305,7 @@ app.item = {};
 
     this.clearFilter = function () {
         const div = $(this).closest("div");
-        console.log("div", div.data())
+        // console.log("div", div.data())
         const ul = div.find("ul");
 
         div.find(".selected").removeClass("selected");
@@ -368,20 +356,47 @@ app.item = {};
         this.onScroll();
 
         $(".fa-times").click(this.clearFilter);
-        $(".sidebar-category .fa-angle-up").click(this.hideSidebarCategory);
-        $(".sidebar-category .fa-angle-down").click(this.showSidebarCategory);
+        $(".expandable .fa-angle-up").click(this.hideSidebar);
+        $(".expandable .fa-angle-down").click(this.showSidebar);
+    }
+
+    this.hideSidebar = function () {
+        $(this).closest(".expandable").removeClass("expanded");
+    }
+    this.showSidebar = function () {
+        $(this).closest(".expandable").addClass("expanded");
 
     }
 
-    this.hideSidebarCategory = function () {
-        console.log("clicked")
-        $(".sidebar-category").removeClass("expanded");
-    }
-    this.showSidebarCategory = function () {
-        console.log("clicked")
-        $(".sidebar-category").addClass("expanded");
-    }
 
+    this.getProductSizes = function (seoIdentifier, template) {
+        const url = "https://ozsale.herokuapp.com/api/product/" + seoIdentifier;
+        const me = this;
+        $.ajax({
+            url: url
+        }).done(function (data) {
+            me.getSizes(data, template)
+        });
+    }
+    this.getSizes = function (data, template) {
+        const sizes = data.skuVariants;
+        console.log(sizes);
+
+        if (sizes.length == 1 && sizes[0].attributes.size == null)
+            template.find(".size-container").remove();
+        else {
+            // let sizes = "";
+            template.find(".btn-size").remove();
+            for (var is = 0; is < sizes.length; is++) {
+                //  sizes += sizes[is].attributes.size + ";"
+                template.find(".buttons").append('<button class = "btn-size" >' + sizes[is].attributes.size + '</button>');
+            }
+            // template.data("sizes", sizes)
+
+        }
+        template.find(".btn-size:first").addClass("select");
+
+    }
     this.onScroll = function () {
         me = this;
         $(window).scroll($.debounce(250, false, function () {
