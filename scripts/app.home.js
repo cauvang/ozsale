@@ -46,8 +46,11 @@ app.home = {};
         for (var i = 0; i < grps.length; i++) {
             if (grps[i].type == "main")
                 this.renderHero(grps[i].banners);
-            else
+            else {
+                if (grps[i].type == "promo")
+                    continue;
                 this.renderSection(grps[i])
+            }
         }
 
         if (grps.length == 0) {
@@ -83,8 +86,8 @@ app.home = {};
             const className = classes[this.itemCount % 3];
             this.itemCount++;
             const el = $(template).addClass(className);
-
-            el.find(".description-top").text(data.bannerText);
+            if (data.bannerText)
+                el.find(".description-top").text(data.bannerText);
             el.find(".description-bottom").text(data.description);
             el.find("a").attr("href", "item.html?id=" + data.destinationId);
             el.find(".img-inner").attr("src", app.utils.replaceImageUrl(data.image, "_313x294"));

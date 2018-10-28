@@ -255,6 +255,7 @@ app.item = {};
         this.getProductSizes(item.seoIdentifier, template);
 
         template.find(".view-product").attr("href", "product.html?id=" + encodeURIComponent(item.seoIdentifier));
+        template.find(".more-size").attr("href", "product.html?id=" + encodeURIComponent(item.seoIdentifier));
 
         if (count < 3) {
             template.removeClass("col-4");
@@ -380,19 +381,14 @@ app.item = {};
     }
     this.getSizes = function (data, template) {
         const sizes = data.skuVariants;
-        console.log(sizes);
 
         if (sizes.length == 1 && sizes[0].attributes.size == null)
             template.find(".size-container").remove();
         else {
-            // let sizes = "";
             template.find(".btn-size").remove();
             for (var is = 0; is < sizes.length; is++) {
-                //  sizes += sizes[is].attributes.size + ";"
                 template.find(".buttons").append('<button class = "btn-size" >' + sizes[is].attributes.size + '</button>');
             }
-            // template.data("sizes", sizes)
-
         }
         template.find(".btn-size:first").addClass("select");
 

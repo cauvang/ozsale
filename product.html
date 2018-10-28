@@ -20,17 +20,17 @@
         crossorigin="anonymous">
 
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/css-toggle-switch@latest/dist/toggle-switch.css" />
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.css" />
     <script src="./scripts/jquery.zoom.js"></script>
+    <script src="./scripts/moment.js"></script>
+
     <script src="./scripts/app.js"></script>
     <script src="./scripts/app.main-menu.js"></script>
     <script src="./scripts/app.product.js"></script>
     <script src="./scripts/app.utils.js"></script>
+    <script src="./scripts/app.user.js"></script>
 
 </head>
 
@@ -98,11 +98,22 @@
     </header>
 
     <section class="main">
+
         <div class="product-detail">
             <div class="view-product">
-                <img class="img-big" src="https://c1.mysalec.com/brands/bd06ad44-8ff6-4d02-9558-bfae65cd312c/f8f33dd4-3286-4138-8b87-76334f4cd598/c7ec5981-42c9-4c6c-ad3b-690e6c1c16f6.JPG">
-            </div>
+                <div class="small-images">
+                    <ul id="image-navigator">
+                        <li><a href="#"><img class="img-select img-small" src="./images/Shoe.jpg"></a></li>
+                        <li><a href="#"><img class="img-small" src="./images/Shoe.jpg"></a></li>
+                        <li><a href="#"><img class="img-small" src="./images/Shoe.jpg"></a></li>
+                    </ul>
+                </div>
+                <div class="big-image">
+                    <label class="sold-out">Sold Out</label>
+                    <img class="img-big" src="https://c1.mysalec.com/brands/bd06ad44-8ff6-4d02-9558-bfae65cd312c/f8f33dd4-3286-4138-8b87-76334f4cd598/c7ec5981-42c9-4c6c-ad3b-690e6c1c16f6.JPG">
+                </div>
 
+            </div>
             <div class="view-product-detail">
                 <div>
                     <div class="brand-name"> Adidas</div>
@@ -110,24 +121,51 @@
                 </div>
 
                 <div class="product-price">
-                    <div class="price-text">$140.00</div>
-                    <div><img class="img-tooltip" src="./images/imgTooltip.png"></div>
-
-                    <div class="website-price-text">$65.00</div>
-                    <img class="img-tooltip" src="./images/imgTooltip.png">
-                    <div class="pricing-hint"></div>
+                    <div class="original-price">
+                        <div class="price-text">$140.00</div>
+                        <img class="img-tooltip" src="./images/imgTooltip.png">
+                        <div class="pricing-hint"></div>
+                    </div>
+                    <div class="website-price">
+                        <div class="price-text">$65.00</div>
+                        <img class="img-tooltip" src="./images/imgTooltip.png">
+                        <div class="pricing-hint"></div>
+                    </div>
                 </div>
                 <div class="pay-now-container">
-                    <span>Pay less today with</span>
-                    <span><img class="img-ourpay" src="./images/imgCapture.PNG"></span>
-                    <img class="img-tooltip" src="./images/imgTooltip.png">
                     <div class="pay-now">
-                        <span class="pay-now-price">$16.25</span>
-                        <span class="pay-now-count">x4</span>
+                        <span>Pay less today with</span>
+                        <span><img class="img-ourpay" src="./images/imgCapture.PNG"></span>
+                        <img class="img-tooltip" src="./images/imgTooltip.png">
+                        <div class="pay-now-info">
+                            <span class="pay-now-price">$16.25</span>
+                            <span class="pay-now-count">x4</span>
+                        </div>
+                    </div>
+                    <div class="payment-schedule">
+                        <span class="payment-info has-padding"></span>
+                        <div class="schedule">
+                            <ul>
+                                <li class="date">Today</li>
+                                <li>
+                                    <div><span class="number number-select">1</div></span>
+                                </li>
+                                <li>
+                                    <div><span class="number">2</div></span>
+                                </li>
+                                <li>
+                                    <div><span class="number">3</span></div>
+                                </li>
+                                <li>
+                                    <div><span class="number">4</span></div>
+                                </li>
+                                <li class="price-text">$1.25</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="size-container">
-                    <div>Select size</div>
+                    <div>Size</div>
                     <button class="buttons select">AU8</button>
                     <button class="buttons">AU10</button>
                     <button class="buttons">AU12</button>
@@ -167,9 +205,7 @@
                     British style and feel, its traditional qualities offer classic designs in addition to more edgy
                     styles.</i><br />
             </div>
-            <div class="brand-description">
-                abdd
-            </div>
+            <div class="brand-description"> </div>
         </div>
 
     </section>
@@ -215,40 +251,43 @@
 
     </footer>
 
-    <div style="display: none;" id="hidden-content" class="login-form">
+    <form style="display: none;" id="signUp-hidden-content" class="sign-up-form">
         <img src="./images/logo.PNG" title="Logo" alt="OZSale" class="login-logo" />
         <div class="sign-up-label">Sign Up</div>
         <div class="form-row">
             <label class="lbl"><strong>First Name</strong></label><br />
-            <input>
+            <input id="firstName" placeholder="first name">
         </div>
         <div class="form-row">
             <label class="lbl"><strong>Last Name</strong></label><br />
-            <input>
+            <input id="lastName" placeholder="last name">
         </div>
         <div class="form-row">
             <label class="lbl"><strong>Email</strong></label><br />
-            <input>
+            <input id="email-signUp" placeholder="email" type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                title="Please enter valid email address">
         </div>
         <div class="form-row">
             <label class="lbl"><strong>Password</strong></label><br />
-            <input>
+            <input id="password-signUp" placeholder="password" type="password" required title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
         </div>
 
         <div class="conditions">
             <label class="switch-light switch-candy" onclick="">
-                <input type="checkbox" id="aaa" checked="checked">
+                <input type="checkbox" id="termCheck" checked="checked">
                 <span>
                     <span>Yes</span>
                     <span>No</span>
                     <a></a>
                 </span>
             </label>
-            <span class="agreement">I agree to the <a class="link-no-color" href="#">Terms and Conditions</a></span>
+            <span class="agreement">I agree to the <a href="#">Terms and Conditions</a></span>
+
         </div>
         <div class="conditions">
             <label class="switch-light switch-candy" onclick="">
-                <input type="checkbox" id="aaa" checked="checked">
+                <input type="checkbox" id="promoCheck" checked="checked">
                 <span>
                     <span>Yes</span>
                     <span>No</span>
@@ -263,36 +302,42 @@
             <button class="btn-visa"><img class="img-visa" alt="Visa Checkout" src="https://assets.secure.checkout.visa.com/wallet-services-web/xo/button.png?width=310&height=47&cobrand=false&svg=false"></button>
         </div>
         <div class="form-row">
-            <a class="link-no-color" class="login-link" href="#">Back To Login</a>
+            <a class="login-link" href="#">Back To Login</a>
         </div>
-    </div>
+    </form>
 
-    <div style="display: none;" id="hidden-content" class="login-form">
+    <form style="display: none;" id="login-hidden-content" class="login-form">
         <img src="./images/logo.PNG" title="Logo" alt="OZSale" class="login-logo" />
+        <span class="notice">Your account is created sucessfully. Please log in</span>
+        <span class="notice-wrong">Wrong email or password. Please check</span>
+
         <div class="access-label">Member access</div>
         <div class="form-row">
             <label class="lbl"><strong>Email</strong></label><br />
-            <input>
+            <input id="email" placeholder="email" type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                title="Please enter valid email address">
         </div>
         <div class="form-row">
             <label class="lbl"><strong>Password</strong></label><br />
-            <input>
+            <input id="password" placeholder="password" type="password" required>
         </div>
         <div class="form-buttons">
             <button class="btn-sign-in">Sign In</button>
             <button class="btn-facebook"><i class="fab fa-facebook-f"></i> Sign in with Facebook</button>
         </div>
         <div class="form-row">
-            <a class="link-no-color" class="forgot-pass" href="#">Forgot password?</a>
+            <a class="forgot-pass" href="#">Forgot password?</a>
         </div>
         <div class="access-label">Not a member yet?</div>
         <div class="form-buttons">
             <button class="btn-sign-up">Sign Up Now</button>
         </div>
-    </div>
+    </form>
+
     <script>
         app.init();
         app.mainMenu.init();
+        app.user.init();
         app.product.init();
     </script>
 </body>

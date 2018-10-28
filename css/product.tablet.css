@@ -17,4 +17,8 @@
     .pay-now-container {
         width: 100%;
     }
+
+    .buttons {
+        margin: 0 10px 10px 0;
+    }
 }

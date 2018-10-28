@@ -66,6 +66,7 @@ header .shopping-cart:hover .cart-empty-text {
 
 }
 
+
 header>nav,
 header>section {
     padding: 0px 226px;
@@ -105,7 +106,7 @@ header nav ul li a {
 }
 
 header section {
-    height: 70px;
+    height: 90px;
 }
 
 .main {
@@ -282,19 +283,19 @@ a {
 }
 
 .shopping .shopping-item.third .shopping-item-inner {
-    padding-left: 5px;
+    margin-left: 5px;
     position: relative;
 }
 
 .shopping .shopping-item.first .shopping-item-inner {
-    padding-right: 5px;
+    margin-right: 5px;
     position: relative;
 
 }
 
 .shopping .shopping-item.second .shopping-item-inner {
-    padding-left: 5px;
-    padding-right: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
     position: relative;
 
 }
@@ -491,7 +492,7 @@ footer nav>ul>li>img {
 
 .login-form,
 .sign-up-form {
-    width: 350px;
+    width: 400px;
     padding: 25px 20px !important;
 }
 
@@ -592,6 +593,7 @@ footer nav>ul>li>img {
 
 .btn-join:hover {
     background-color: black;
+    cursor: pointer;
 }
 
 .fa-facebook-f {
@@ -660,8 +662,8 @@ footer nav>ul>li>img {
 }
 
 .menu-inner h4 {
-    margin: 5px 5px;
-    padding: 5px 10px;
+    margin: 5px 0px;
+    padding: 5px 5px;
 
 }
 
@@ -689,4 +691,45 @@ footer nav>ul>li>img {
     margin: 0 auto;
     width: 100%;
     text-align: center;
+}
+
+.notice {
+    display: none;
+}
+
+.notice-wrong {
+    display: none;
+}
+
+.show-notice.notice {
+    color: green;
+    margin-top: 10px;
+    display: block;
+}
+
+.show-notice-wrong.notice-wrong {
+    color: red;
+    margin-top: 10px;
+    display: block;
+}
+
+.validation-error input:invalid {
+    border: 2px dashed red;
+}
+
+.logged .username {
+    display: block;
+    margin: 5px 0;
+    float: left;
+
+}
+
+.logged .sign-out {
+    display: inline-block;
+    margin: 5px 0px 5px 25px;
+}
+
+.username,
+.sign-out {
+    display: none;
 }

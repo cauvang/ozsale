@@ -13,6 +13,19 @@ app.utils = {};
         return "https://c1.mysalec.com/brands/" + item.BrandID + "/" + item.ImageID + "/" + item.File
     }
 
+    this.getImages = function (data) {
+        var images = [];
+        if (data && data.length > 0) {
+            for (var i = 0; i < data.length; i = i + 4) {
+                images.push({
+                    smallThumbnail: data[i],
+                    //  thumbnail: data[i + 2],
+                    preview: data[i + 3]
+                })
+            }
+        }
+        return images;
+    }
     this.getProductImageList = function (item) {
         var images = [];
         if (item.Images && item.Images.length > 0) {
@@ -28,7 +41,6 @@ app.utils = {};
         }
         return images;
     }
-
     this.currencyFormat = function (item) {
         if (item.toString().indexOf('.') > 0)
             return "$" + item;

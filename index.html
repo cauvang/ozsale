@@ -19,6 +19,7 @@
     <script src="./scripts/app.utils.js"></script>
     <script src="./scripts/app.home.js"></script>
     <script src="./scripts/jquery.scroll.js"></script>
+    <script src="./scripts/app.user.js"></script>
 
 </head>
 
@@ -28,10 +29,16 @@
             <div class="show-xs menu"><a href="#" id="togglemenu"> <i class="fas fa-bars hide-on-menu"></i> <i class="far fa-window-close color-white show-on-menu"></i></a></div>
             <a href="index.html"><img src="./images/logo.PNG" title="Logo" alt="OZSale" class="logo" /></a>
             <div class="profile">
-                <img src="./images/no-image.png" class="profile-image" />
-                <div class="shopping-cart">
-                    <i class="fas fa-cart-arrow-down"></i>
-                    <div class="cart-empty-text">Your cart is empty</div>
+                <div>
+                    <img src="./images/no-image.png" class="profile-image" />
+                    <div class="shopping-cart">
+                        <i class="fas fa-cart-arrow-down"></i>
+                        <div class="cart-empty-text">Your cart is empty</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="username"></div>
+                    <a class="sign-out" href="#">Sign out</a>
                 </div>
             </div>
         </section>
@@ -308,14 +315,12 @@
             <div id="shopping-item-template">
                 <div class="shopping-item">
                     <div class="shopping-item-inner">
-                        <!-- <div class="image-box"> -->
                         <a href="item.html">
                             <span class="description-top">UP TO 85% OFF</span>
                             <img src="./images/imgBec.JPG" class="img-inner">
                             <span class="description-bottom">48 HOUR - Bec & Bridge, Backstage, Finders Keepers & MORE</span>
                             <span class="date-sale">Ending tomorrow</span>
                         </a>
-                        <!-- </div> -->
                     </div>
                 </div>
             </div>
@@ -411,29 +416,31 @@
         </nav>
     </footer>
 
-    <div style="display: none;" id="hidden-content" class="sign-up-form">
+    <form style="display: none;" id="signUp-hidden-content" class="sign-up-form">
         <img src="./images/logo.PNG" title="Logo" alt="OZSale" class="login-logo" />
         <div class="sign-up-label">Sign Up</div>
         <div class="form-row">
             <label class="lbl"><strong>First Name</strong></label><br />
-            <input>
+            <input id="firstName" placeholder="first name">
         </div>
         <div class="form-row">
             <label class="lbl"><strong>Last Name</strong></label><br />
-            <input>
+            <input id="lastName" placeholder="last name">
         </div>
         <div class="form-row">
             <label class="lbl"><strong>Email</strong></label><br />
-            <input>
+            <input id="email-signUp" placeholder="email" type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                title="Please enter valid email address">
         </div>
         <div class="form-row">
             <label class="lbl"><strong>Password</strong></label><br />
-            <input>
+            <input id="password-signUp" placeholder="password" type="password" required title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
         </div>
 
         <div class="conditions">
             <label class="switch-light switch-candy" onclick="">
-                <input type="checkbox" id="aaa" checked="checked">
+                <input type="checkbox" id="termCheck" checked="checked">
                 <span>
                     <span>Yes</span>
                     <span>No</span>
@@ -445,7 +452,7 @@
         </div>
         <div class="conditions">
             <label class="switch-light switch-candy" onclick="">
-                <input type="checkbox" id="aaa" checked="checked">
+                <input type="checkbox" id="promoCheck" checked="checked">
                 <span>
                     <span>Yes</span>
                     <span>No</span>
@@ -462,18 +469,22 @@
         <div class="form-row">
             <a class="login-link" href="#">Back To Login</a>
         </div>
-    </div>
+    </form>
 
-    <div style="display: none;" id="hidden-content" class="login-form">
+    <form style="display: none;" id="login-hidden-content" class="login-form">
         <img src="./images/logo.PNG" title="Logo" alt="OZSale" class="login-logo" />
+        <span class="notice">Your account is created sucessfully. Please log in</span>
+        <span class="notice-wrong">Wrong email or password. Please check</span>
+
         <div class="access-label">Member access</div>
         <div class="form-row">
             <label class="lbl"><strong>Email</strong></label><br />
-            <input>
+            <input id="email" placeholder="email" type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                title="Please enter valid email address">
         </div>
         <div class="form-row">
             <label class="lbl"><strong>Password</strong></label><br />
-            <input>
+            <input id="password" placeholder="password" type="password" required>
         </div>
         <div class="form-buttons">
             <button class="btn-sign-in">Sign In</button>
@@ -486,12 +497,14 @@
         <div class="form-buttons">
             <button class="btn-sign-up">Sign Up Now</button>
         </div>
-    </div>
+    </form>
+
+
     <script>
         app.init();
         app.mainMenu.init();
         app.home.init();
-        // app.user.init();
+        app.user.init();
     </script>
 
 </body>
