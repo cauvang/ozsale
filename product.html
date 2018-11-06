@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title> OZSale</title>
+    <title> OZSale - Product</title>
     <meta name="description" content="oz sale sample" />
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/item.css" />
@@ -20,9 +20,14 @@
         crossorigin="anonymous">
 
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/css-toggle-switch@latest/dist/toggle-switch.css" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
     <script src="./scripts/jquery.zoom.js"></script>
     <script src="./scripts/moment.js"></script>
 
@@ -31,6 +36,7 @@
     <script src="./scripts/app.product.js"></script>
     <script src="./scripts/app.utils.js"></script>
     <script src="./scripts/app.user.js"></script>
+    <script src="./scripts/app.cart.js"></script>
 
 </head>
 
@@ -41,45 +47,87 @@
                     <i class="far fa-window-close color-white show-on-menu"></i></a></div>
             <a href="index.html"><img src="./images/logo.PNG" title="Logo" alt="OZSale" class="logo" /></a>
             <div class="profile">
-                <img src="./images/no-image.png" class="profile-image" />
-                <div class="shopping-cart not-empty" id="shopping-cart-icon">
-                    <i class="fas fa-cart-arrow-down"></i>
-                    <span class="shopping-cart-item-count">1</span>
-                    <div class="cart-empty-text">Delivery xxx </div>
-                    <div class="cart-detail">
-                        <div class="cart-row">
-                            <div class="cart-row-image">
-                                <img src="./images/shoe.JPG">
-                            </div>
-                            <div class="cart-row-detail">
-                                <div class="cart-row-product-name"><a href="cart.html">Adistar Boost Glow Shoes</a></div>
-                                <div class="cart-row-product-size">
-                                    <span>Size</span>
-                                    <span>UK7</span>
+                <div>
+                    <img src="./images/no-image.png" class="profile-image" />
+
+                    <div class="shopping-cart" id="shopping-cart-icon">
+                        <i class="fas fa-cart-arrow-down"></i>
+                        <span class="shopping-cart-item-count">1</span>
+                        <div class="shopping-cart-delivery">Your cart is empty</div>
+                        <div class="cart-detail">
+                            <div class="cart-row">
+                                <img class="cart-row-image" src="./images/shoe.JPG">
+                                <div class="cart-row-detail">
+                                    <div class="cart-row-product-name"><a href="cart.html">Adistar Boost Glow Shoes</a></div>
+                                    <div class="cart-row-product-size">
+                                        <span>Size</span>
+                                        <span>UK7</span>
+                                    </div>
+                                    <div class="cart-row-product">
+                                        <span class="cart-row-product-count">2 item</span>
+                                        <span class="cart-row-product-price">$59.00</span>
+                                    </div>
                                 </div>
-                                <div class="cart-row-product-count">1 item - $59.00</div>
                             </div>
+
+                            <div class="cart-row">
+                                <img class="cart-row-image" src="./images/shoe.JPG">
+                                <div class="cart-row-detail">
+                                    <div class="cart-row-product-name"><a href="#">Adistar Boost Glow Shoes</a></div>
+                                    <div class="cart-row-product">
+                                        <span>Size</span>
+                                        <span class="cart-row-product-size">UK4</span>
+                                    </div>
+                                    <div class="cart-row-product">
+                                        <span class="cart-row-product-count">2 item</span>
+                                        <span class="cart-row-product-price">$59.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn-checkout">Proceed to checkout</button>
+
                         </div>
 
+                    </div>
+
+                    <div>
+                        <div class="username"></div>
+                        <a class="sign-out" href="#">Sign out</a>
+                    </div>
+                </div>
+                <div class="announce-basket">
+                    <div class="announce-title">Item has been added to your basket</div>
+                    The items you have selected have been added to your basket<br />
+                    <div class="view-basket">
+                        <button class="btn-view-basket">View basket</button></div>
+                </div>
+
+                <div class="announce-size">
+                    <div class="announce-title">Size is not selected</div>
+                    Please choose a size<br />
+                </div>
+
+                <div style="display:none">
+                    <div id="cart-row-template">
                         <div class="cart-row">
-                            <div class="cart-row-image">
-                                <img src="./images/shoe.JPG">
-                            </div>
+                            <img class="cart-row-image" src="./images/shoe.JPG">
                             <div class="cart-row-detail">
                                 <div class="cart-row-product-name"><a href="#">Adistar Boost Glow Shoes</a></div>
-                                <div class="cart-row-product-size">
+                                <div class="cart-row-product">
                                     <span>Size</span>
-                                    <span>UK4</span>
+                                    <span class="cart-row-product-size">UK4</span>
                                 </div>
-                                <div class="cart-row-product-count">2 item - $59.00</div>
+                                <div class="cart-row-product">
+                                    <span class="cart-row-product-count">2 item</span>
+                                    <span class="cart-row-product-price">$59.00</span>
+                                </div>
                             </div>
                         </div>
-                        <button class="btn-checkout">Proceed to checkout</button>
-
+                        <!-- <button class="btn-checkout">Proceed to checkout</button> -->
 
                     </div>
                 </div>
-            </div>
         </section>
 
         <nav>
@@ -98,7 +146,6 @@
     </header>
 
     <section class="main">
-
         <div class="product-detail">
             <div class="view-product">
                 <div class="small-images">
@@ -110,6 +157,7 @@
                 </div>
                 <div class="big-image">
                     <label class="sold-out">Sold Out</label>
+                    <span class="description-top">UP TO 85% OFF</span>
                     <img class="img-big" src="https://c1.mysalec.com/brands/bd06ad44-8ff6-4d02-9558-bfae65cd312c/f8f33dd4-3286-4138-8b87-76334f4cd598/c7ec5981-42c9-4c6c-ad3b-690e6c1c16f6.JPG">
                 </div>
 
@@ -172,7 +220,7 @@
                     <button class="buttons">AU14</button>
                 </div>
                 <div>
-                    <button class="add-to-cart-button" data-fancybox data-src="#hidden-content">Add To Basket</button>
+                    <button class="add-to-cart-button">Add To Basket</button>
                 </div>
                 <div class="delivery">
                     <strong>Estimated Delivery</strong>
@@ -339,6 +387,7 @@
         app.mainMenu.init();
         app.user.init();
         app.product.init();
+        app.cart.init();
     </script>
 </body>
 

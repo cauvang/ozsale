@@ -6,12 +6,13 @@ app.product = {};
 (function () {
 
     this.getProductDetail = function (data) {
-        //console.log("product info:", data);
+        //  console.log("product info:", data);
         this.getImages(data.images);
         this.getDetail(data);
     }
 
     this.getDetail = function (data) {
+        $(".description-top").text(data.labelText);
         $(".brand-name").text(data.brandName);
         $(".product-name").text(data.name);
         if (data.originalPrice.value == 0) {
@@ -37,9 +38,6 @@ app.product = {};
             $(".brand-description").remove();
 
         $(".buttons").remove();
-        // if (data.skuVariants.length == 1)
-        //     $(".size-container").append('<button class = "buttons select" >' + data.skuVariants[0].attributes.size + '</button>');
-        // else {
         for (var is = 0; is < data.skuVariants.length; is++) {
             const size = data.skuVariants[is].attributes.size;
             // var soldOut = true;
@@ -59,8 +57,7 @@ app.product = {};
         }
         if (data.skuVariants.length == 1)
             $(".size-container buttons").addClass("select");
-        // }
-        if ($(".size-container buttons").length == 0)
+        if ($(".size-container .buttons").length == 0)
             $(".size-container").remove();
 
         $(".buttons").click(this.onButtonSizeClick);
@@ -110,7 +107,7 @@ app.product = {};
         } else {
             $(".img-small").remove();
             var imgURLs = app.utils.getImages(data);
-            console.log(imgURLs)
+            // console.log(imgURLs)
             $(".img-big").attr("src", imgURLs[0].preview)
 
             for (var i = 0; i < imgURLs.length; i++) {
@@ -148,5 +145,8 @@ app.product = {};
     this.init = function () {
         this.seoIdentifier = app.utils.getParameterValues("id");
         this.fetchProductDetail();
+
     }
+
+
 }).apply(app.product)

@@ -1,0 +1,205 @@
+.product,
+.deliveries,
+.payment {
+    width: 33.33%;
+    display: block;
+    float: left;
+    font-size: 18px;
+    font-weight: 700;
+    color: #323232;
+    padding: 10px;
+}
+
+.item-row:first-child {
+    border-top: 1px solid #ebebeb;
+}
+
+.item-row {
+    overflow: auto;
+}
+
+.item-row-image {
+    text-align: center;
+}
+
+.item-row-image,
+.item-row-detail {
+    width: 50%;
+    padding: 5px;
+    float: left;
+}
+
+.product-name {
+    color: #323232;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.product-size {
+    color: grey;
+    font-size: 12px;
+    margin: 0 0 10px;
+}
+
+.product-price {
+    font-size: 20px;
+    color: #323232;
+}
+
+.product-quantity {
+    margin-bottom: 10px;
+    text-align: left;
+    width: 105px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.qty-wrapper {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.qty-button {
+    color: grey;
+}
+
+.qty-button,
+.qty-value {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.DA {
+    padding: 10px 0;
+}
+
+.PU:first-child {
+    border-top: 1px solid #ebebeb;
+}
+
+.PU {
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.DA-title,
+.PU-title {
+    color: #323232;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.DA-text,
+.PU-text {
+    font-size: 12px;
+    line-height: 19px;
+    font-weight: 500;
+    color: grey;
+    padding-right: 10px;
+    display: inline;
+}
+
+.PU-info {
+    font-size: 12px;
+    line-height: 19px;
+    font-weight: 500;
+    color: grey;
+    margin-top: 3px;
+    padding-right: 10px;
+}
+
+.attention-label {
+    color: #fff;
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    margin-right: 5px;
+    background-color: #ff785f;
+    border-radius: 10px;
+    display: inline;
+}
+
+.free-text {
+    float: right;
+    padding-right: 10px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.standard-payment,
+.select-payment {
+    font-size: 16px;
+    font-weight: 400;
+    color: #323232;
+    margin: 15px 0;
+    padding-bottom: 15px;
+}
+
+.select-payment {
+    font-size: 30px;
+}
+
+.select-text {
+    font-size: 12px;
+    color: grey;
+    line-height: 18px;
+    margin-top: 3px;
+}
+
+.border-top {
+    border-top: 1px solid #ebebeb;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #ebebeb;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.delivery-option-row,
+.condition {
+    padding: 15px 0;
+}
+
+.delivery-package {
+    font-size: 16px;
+    color: #323232;
+    display: inline-block;
+}
+
+.delivery-saving {
+    font-size: 12px;
+    color: gray;
+    padding-left: 25px;
+}
+
+.show-delivery.delivery-options {
+    display: block !important;
+    padding-left: 20px;
+
+}
+
+.payment label {
+    margin: 10px 0;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 700;
+    color: #323232;
+    display: block;
+}
+
+.payment input {
+    margin: 0 0 10px 0;
+}

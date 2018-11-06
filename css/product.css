@@ -184,20 +184,20 @@ header .shopping-cart:hover .cart-detail {
     top: 60px;
     left: -150px;
     display: block;
+    z-index: 99;
 }
 
-header .shopping-cart.not-empty {
+
+header .shopping-cart.not-empty-cart {
     background-color: #65d87f;
 }
 
-header .shopping-cart.not-empty .shopping-cart-item-count {
+.cart-detail:hover,
+header .shopping-cart.not-empty-cart .shopping-cart-item-count,
+header .shopping-cart.not-empty-cart .shopping-cart-delivery {
     display: block;
 }
 
-
-header .shopping-cart.not-empty .cart-empty-text {
-    display: block;
-}
 
 .cart-row {
     position: relative;
@@ -230,21 +230,20 @@ header .shopping-cart.not-empty .cart-empty-text {
     color: #323232;
 }
 
-.cart-row-product-size {
+/* .cart-row-product-size {
     width: 100%;
     color: grey !important;
-}
+} */
 
 
-.cart-row-product-size span:after {
+.cart-row-product span:after {
     content: "-";
     margin: 0px 3px;
 }
 
-.cart-row-product-size span:last-child:after {
+.cart-row-product span:last-child:after {
     content: "";
 }
-
 
 
 
@@ -258,6 +257,7 @@ header .shopping-cart.not-empty .cart-empty-text {
     padding: 10px;
 }
 
+
 .shopping-cart-item-count {
     border-radius: 7px;
     background-color: #da3427;
@@ -270,6 +270,14 @@ header .shopping-cart.not-empty .cart-empty-text {
     left: 60px;
     font-size: 10px;
     position: absolute;
+}
+
+.shopping-cart-delivery {
+    color: #fff;
+    font-size: 9px;
+    font-weight: 400;
+    padding-top: 10px;
+    text-align: center;
 }
 
 .brand-description {
@@ -408,4 +416,45 @@ header .shopping-cart.not-empty .cart-empty-text {
 
 .is-sold-out .sold-out {
     display: block;
+}
+
+.announce-basket,
+.announce-size {
+    display: none;
+}
+
+.added-to-basket.announce-basket,
+.no-size-selected.announce-size {
+    display: block;
+    position: fixed;
+    top: 95px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.95);
+    right: 55px;
+    color: white;
+    z-index: 99;
+}
+
+.no-size-selected.announce-size {
+    top: 75px;
+    right: 330px;
+}
+
+.btn-view-basket {
+    background-color: #65ef7f;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    width: 150px;
+    margin-top: 10px;
+}
+
+.view-basket {
+    text-align: center;
+}
+
+.announce-title {
+    font-size: 20px;
+    margin-bottom: 10px;
 }

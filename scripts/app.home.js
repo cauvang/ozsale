@@ -86,8 +86,11 @@ app.home = {};
             const className = classes[this.itemCount % 3];
             this.itemCount++;
             const el = $(template).addClass(className);
-            if (data.bannerText)
+            if (data.bannerText != "")
                 el.find(".description-top").text(data.bannerText);
+            else
+                el.find(".description-top").remove();
+
             el.find(".description-bottom").text(data.description);
             el.find("a").attr("href", "item.html?id=" + data.destinationId);
             el.find(".img-inner").attr("src", app.utils.replaceImageUrl(data.image, "_313x294"));
@@ -98,7 +101,11 @@ app.home = {};
 
     this.updateHeroItem = function (selector, item, imgParam) {
         var hero = $(selector);
-        hero.find(".description-top").text(item.bannerText);
+        if (item.bannerText != "")
+            hero.find(".description-top").text(item.bannerText);
+        else
+            hero.find(".description-top").remove();
+
         hero.find(".description-bottom").text(item.description);
         hero.find("a").attr("href", "item.html?id=" + item.destinationId);
         hero.find(".img-inner").attr("src", app.utils.replaceImageUrl(item.image, imgParam));

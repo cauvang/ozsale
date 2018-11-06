@@ -6,6 +6,7 @@ app.user = {};
 (function () {
 
     this.onProfileClick = function () {
+        // console.log("profile click", localStorage.token)
         if (localStorage.token)
             window.location.href = "profile.html";
         else
@@ -25,7 +26,7 @@ app.user = {};
         var validation_pass = $("#password-signUp")[0].checkValidity();
         // console.log("hasError_pass", validation_email, validation_pass)
         if (validation_email && validation_pass) {
-            console.log("pass")
+            // console.log("pass")
             e.preventDefault()
             var user = {
                 email: $("#email-signUp").val(),
@@ -55,7 +56,7 @@ app.user = {};
     }
 
     this.onSignInClick = function (e) {
-        console.log(localStorage.getItem("token"));
+        var me = app.user;
         if (localStorage.getItem("token") != null) {} else {
 
             e.preventDefault()
@@ -64,14 +65,14 @@ app.user = {};
                 email: $("#email").val(),
                 password: $("#password").val(),
             }
-            //  console.log(user);
             const url = "https://ozsale.herokuapp.com/auth/login";
             $.ajax({
                 type: "POST",
                 url: url,
                 data: user,
                 success: function (data) {
-                    console.log("dunggg", data)
+                    me.logged = true;
+                    me.userData = data;
                     localStorage.setItem("user", {
                         email: data.user.email,
                         firstName: data.user.firstName,
@@ -80,8 +81,8 @@ app.user = {};
                     localStorage.token = data.token;
                     $.fancybox.getInstance().close();
                     $("body").addClass("logged");
-
                     $(".username").text("Hello, " + data.user.firstName)
+                    app.cart.getCartItems();
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     // alert(xhr.status);
@@ -93,17 +94,23 @@ app.user = {};
         }
     }
     this.onSignOutClick = function () {
-
+        this.logged = false;
+        this.userData = null;
         localStorage.clear();
         $(".username").text("");
         $("body").removeClass("logged");
 
+        app.cart.EmptyCart();
+
     }
-    this.init = function () {
-        $(".profile-image").click(this.onProfileClick);
-        $(".btn-sign-up").click(this.onSignUpClick);
-        $(".btn-join").click(this.onJoinClick);
-        $("#login-hidden-content").submit(this.onSignInClick)
+    this.verify = function (success, err) {
+        if (this.logged) {
+            success();
+        } else
+            err();
+    }
+    this.checkLoggedOn = function () {
+        var me = this;
         if (localStorage.token) {
             $.ajax({
                 url: "https://ozsale.herokuapp.com/api/user",
@@ -113,14 +120,29 @@ app.user = {};
                 },
                 method: 'GET',
                 success: function (data) {
-                    console.log('succes: ', data);
+                    me.logged = true;
+                    me.userData = data;
+                    //   console.log('logged on success: ', data);
                     $("body").addClass("logged");
                     if (data.email)
-                        $(".username").text("Hello, " + data.firstName)
+                        $(".username").text("Hello, " + data.firstName);
 
-                }
+                    app.cart.getCartItems();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    localStorage.clear();
+                },
             });
         }
+    }
+    this.init = function () {
+        this.logged = false;
+        this.checkLoggedOn();
+
+        $(".profile-image").click(this.onProfileClick);
+        $(".btn-sign-up").click(this.onSignUpClick);
+        $(".btn-join").click(this.onJoinClick);
+        $("#login-hidden-content").submit(this.onSignInClick)
         $(".sign-out").click(this.onSignOutClick);
     }
 }).apply(app.user)

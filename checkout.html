@@ -1,0 +1,304 @@
+<html>
+
+<head>
+    <title> OZSale - Checkout</title>
+    <meta name="description" content="oz sale sample" />
+    <link rel="stylesheet" href="./css/site.css" />
+    <link rel="stylesheet" href="./css/item.css" />
+    <link rel="stylesheet" href="./css/product.css" />
+    <link rel="stylesheet" href="./css/checkout.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.js"></script>
+
+    <script src="./scripts/app.main-menu.js"></script>
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/app.utils.js"></script>
+    <script src="./scripts/app.home.js"></script>
+    <script src="./scripts/jquery.scroll.js"></script>
+    <script src="./scripts/app.user.js"></script>
+    <script src="./scripts/app.cart.js"></script>
+    <script src="./scripts/app.checkout.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <section>
+            <div class="show-xs menu"><a href="#" id="togglemenu"> <i class="fas fa-bars hide-on-menu"></i> <i class="far fa-window-close color-white show-on-menu"></i></a></div>
+            <a href="index.html"><img src="./images/logo.PNG" title="Logo" alt="OZSale" class="logo" /></a>
+            <div class="profile">
+                <div>
+                    <img src="./images/no-image.png" class="profile-image" />
+                    <div class="shopping-cart">
+                        <i class="fas fa-cart-arrow-down"></i>
+                        <div class="cart-empty-text">Your cart is empty</div>
+                    </div>
+                </div>
+                <div class="username"></div>
+
+            </div>
+        </section>
+        <nav>
+            <ul id="menu-list">
+                <li><a href="#">Shop</a></li>
+                <li class="active menu-hover"> <a href="#">Women</a>
+                    <div class="menu-inner">
+                        <div class="menu-inner-col">
+                            <h4><a href="#">Clothing</a></h4>
+                            <ul>
+                                <li><a href="#">Dresses</a></li>
+                                <li>T-shirts</li>
+                                <li>Shirts</li>
+                                <li>Intimates</li>
+                            </ul>
+                        </div>
+                        <div class="menu-inner-col">
+                            <h4>Accessories</h4>
+                            <ul>
+                                <li>Jewelry</li>
+                                <li>Sunglasses</li>
+                                <li>Handbags</li>
+                                <li>Intimates</li>
+                            </ul>
+                        </div>
+                        <div class="menu-inner-col">
+                            <h4>Footware</h4>
+                            <ul>
+                                <li>Sandals</li>
+                                <li>Boots</li>
+                                <li>Flats</li>
+                                <li>Tops</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="menu-hover"><a href="#">Home</a></li>
+                <li><a href=" #">Men</a></li>
+                <li><a href="#">Kids & Toys</a></li>
+                <li><a href="#">Footware & Acc</a></li>
+                <li><a href="#">Beauty</a></li>
+                <li><a href="#">Personalise</a></li>
+                <li><a href="#" class="emphasis">Clearance</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="main">
+        <div class="product cursor">Products
+            <div class="item-row">
+                <img class="item-row-image" src="./images/shoe.JPG">
+                <div class="item-row-detail">
+                    <div class="product-name">Chuck Taylor All Star</div>
+                    <div class="product-size">UK 10</div>
+                    <div class="product-quantity">
+                        <span class="qty-wrapper">
+                            <span class="qty-button qty-down" role="decrease">–</span>
+                        </span>
+                        <span class="qty-value">2</span>
+                        <span class="qty-wrapper">
+                            <span class="qty-button qty-up" role="increase">+</span>
+                        </span>
+                    </div>
+                    <div class="product-price">$59</div>
+                </div>
+            </div>
+            <div class="item-row border-bottom">
+                <img class="item-row-image" src="./images/shoe.JPG">
+                <div class="item-row-detail">
+                    <div class="product-name">Chuck Taylor All Star</div>
+                    <div class="product-size">UK 10</div>
+                    <div class="product-quantity">
+                        <span class="qty-wrapper">
+                            <span class="qty-button qty-down" role="decrease">–</span>
+                        </span>
+                        <span class="qty-value">2</span>
+                        <span class="qty-wrapper">
+                            <span class="qty-button qty-up" role="increase">+</span>
+                        </span>
+                    </div>
+                    <div class="product-price">$59</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="deliveries cursor">Delivery
+            <div class="DA border-top border-bottom">
+                <div class="DA-title">Delivery Address</div>
+                <div class="DA-text">You may add your home or office address for usual delivery</div>
+            </div>
+            <div class="PU border-bottom">
+                <div class="PU-title">Pickup Location</div>
+                <div class="PU-info">
+                    <span class="attention-label">New</span>
+                    <div class="PU-text">Pickup Point options are available. Find your nearest location!</div>
+                </div>
+            </div>
+            <div class="payment-option border-bottom border-top">
+                <div class="standard-payment border-bottom">
+                    <input type="radio" name="payment-opt" value="Standard" class="radio-payment" checked />
+                    <label>Standard</label>
+                    <span class="free-text">$9.95</span>
+                </div>
+                <div class="select-payment">
+                    <input type="radio" name="payment-opt" value="Select" class="radio-payment" />
+                    <label>Select</label>
+                    <span class="free-text">Free</span>
+                    <div class="select-text">
+                        <span>Subscription for 4, 7 or 10 free deliveries per year </span>
+                        <a href="#" class="link-no-color">More Information</a>
+                        <div class="delivery-options" style="display:none">
+                            <div class="delivery-option-row border-bottom">
+                                <div>
+                                    <input type="radio" name="delivery-option" class="radio-delivery" checked />
+                                    <div class="delivery-package">$18.00 - 4 free deliveries</div>
+                                </div>
+                                <div class="delivery-saving">Usually $39.80, save $21.80</div>
+                            </div>
+                            <div class="delivery-option-row border-bottom">
+                                <div>
+                                    <input type="radio" name="delivery-option" class="radio-delivery" />
+                                    <div class="delivery-package">$28.00 - 7 free deliveries</div>
+                                </div>
+                                <div class="delivery-saving">Usually $69.65, save $41.65</div>
+                            </div>
+                            <div class="condition">
+                                <input type="checkbox" />
+                                I agree to OurPay Select <a class="link-no-color">Terms & Conditions</a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="payment border-bottom cursor">
+            Payment
+            <label>Card Number</label>
+            <input class="card-number" placeholder="1234 1234 1234 1234">
+            <label>CVV</label>
+            <input class="CVV" placeholder="100">
+            <label>Expiration Date</label>
+            <input class="expiration-date" placeholder="01/19">
+
+            <div class="subtotal">
+                Subtotal
+                <div class="price">$18.00</div>
+            </div>
+            <div class="delivery-price">Delivery
+                <div class="price">$9.95</div>
+            </div>
+            <div class="voucher">Vouchers
+                <div class="price">$0.00</div>
+            </div>
+            <a class="link-no-color">Apply Vouchers</a>
+            <div class="total-order">Total Order
+                <div class="price">$27.95</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="about">
+                <ul class="about-container">
+                    <li><img src="./images/logo.PNG" class="logo"></li>
+                    <li>About us
+                        <ul class="about-item">
+                            <li><a href="#" class="link-small-hover">About</a> </li>
+                            <li>How does it work</li>
+                            <li>How to join</li>
+                        </ul>
+                    </li>
+                    <li>Our Countries
+                        <ul class="about-item">
+                            <li>Australia</li>
+                            <li>New Zealand</li>
+                            <li>Singapore</li>
+                            <li>Malaysia</li>
+                            <li>Thailand</li>
+                            <li>Philippines</li>
+                        </ul>
+                    </li>
+                    <li>My Account
+                        <ul class="about-item">
+                            <li>My Details</li>
+                            <li>My Addresses</li>
+                            <li>My Vouchers</li>
+                            <li>My Orders</li>
+                        </ul>
+                    </li>
+                    <li class="show-xs app-icons">
+                        Available on <br />
+                        <br />
+                        <img src="https://freeiconshop.com/wp-content/uploads/edd/android-flat.png">
+                        <img src="https://freeiconshop.com/wp-content/uploads/edd/iphone-flat.png">
+                    </li>
+                </ul>
+            </div>
+            <div class="app hide-xs">
+                <div class="iPhone">
+                    <i class="fas fa-mobile-alt"></i>
+                    <div class="avail-text">Available Now!<br />Our Iphone App</div>
+                </div>
+                <div class="android">
+                    <i class="fas fa-mobile-alt"></i>
+                    <div class="avail-text">Available Now!<br />Our Android App</div>
+                </div>
+            </div>
+        </div>
+        <div class="paymethod">
+            <ul class="pay-container">
+                <li class="pay-text hide-xs hide-tablet">Now Accepting</li>
+                <li><img src="./images/imgPaypal.PNG"> </li>
+                <li><img src="./images/imgVisa.PNG"> </li>
+                <li><img src="./images/imgMasterCard.PNG"></li>
+                <li><img src="./images/imgVisaCheckout.PNG"></li>
+                <li><img src="./images/imgMasterPass.PNG"></li>
+                <li><img src="./images/imgAmericanExpress.PNG"></li>
+                <li>
+                    <i class="fas fa-lock"></i>
+                    <div class="lock-text">
+                        <div class="emphasis">Shop with confidence</div>
+                        <div>Your order is safe and secure</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <nav>
+            <ul>
+                <li>About us</li>
+                <li>Terms and Conditions</li>
+                <li>Return Policy</li>
+                <li>Privacy</li>
+                <li>Help</li>
+                <li>Blog</li>
+                <li>Contact</li>
+                <li>Ourpay</li>
+                <li class="xs-full-width">Investors</li>
+                <li><img src="./images/imgPlaystore.PNG"></li>
+                <li><img src="./images/imgApple.PNG"></li>
+                <li><img src="./images/imgTwitter.PNG"></li>
+                <li><img src="./images/imgFacbook.PNG"></li>
+                <li><img src="./images/imgInstagram.PNG"></li>
+            </ul>
+        </nav>
+    </footer>
+
+
+    <script>
+        app.init();
+        app.mainMenu.init();
+        app.user.init();
+        app.checkout.init();
+    </script>
+
+</body>
+
+</html>
